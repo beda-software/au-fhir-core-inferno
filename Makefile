@@ -3,6 +3,10 @@ setup:
 	docker compose build
 	docker compose run inferno bundle exec rake db:migrate
 
+ig_download:
+	docker compose build
+	docker compose run inferno ruby lib/au_core_test_kit/generator/ig_download.rb
+
 generate:
 	docker compose run inferno bundle exec rake au_core:generate
 
