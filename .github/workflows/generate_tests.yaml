@@ -15,3 +15,18 @@ jobs:
       run: make ig_download
     - name: Run generate
       run: make generate
+    - name: Check for changes
+      id: check_changes
+      run: |
+        git fetch origin master
+        CHANGES=$(git diff --name-only HEAD $(git merge-base HEAD origin/master))
+        echo "::set-output name=changes::$CHANGES"
+    - name: Create Merge Request
+      if: steps.check_changes.outputs.changes != ''
+      uses: peter-evans/create-pull-request@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: automate-merge
+        title: Automatically generated merge request
+        body: This merge request was automatically created because changes were pushed to the repository.
+        labels: automated
