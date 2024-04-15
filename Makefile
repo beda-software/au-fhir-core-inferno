@@ -32,3 +32,6 @@ stop:
 
 down:
 	docker compose down
+
+check_changes:
+	git diff >/dev/null && echo "True" || echo "False"
