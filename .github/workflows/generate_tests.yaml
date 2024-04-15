@@ -1,7 +1,8 @@
 name: Generate Tests
 on:
-  schedule:
-    - cron:  '*/5 * * * *'
+  push:
+    branches:
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
