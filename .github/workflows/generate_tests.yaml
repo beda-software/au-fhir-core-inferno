@@ -22,7 +22,7 @@ jobs:
       with:
         raw_diff_file_output: diff.txt
         file_output_only: "true"
-    - name: print raw diff
-      env:
-        DIFF: ${{ steps.git-diff-action.outputs.raw-diff-path }}
-      run: cat $DIFF
+    - name: Create Pull Request
+      if: steps.git-diff-action.outputs.raw-diff-path != ''
+      uses: peter-evans/create-pull-request@v6
+      id: cpr
