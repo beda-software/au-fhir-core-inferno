@@ -26,7 +26,8 @@ module AUCoreTestKit
                     group.search_definitions[search_key],
                     base_output_dir,
                     chain_item,
-                    target_identifier
+                    target_identifier,
+                    ig_metadata
                   ).generate
                 end
               end
@@ -35,15 +36,15 @@ module AUCoreTestKit
         end
       end
 
-      attr_accessor :search_name, :group_metadata, :search_metadata, :base_output_dir, :chain_item, :target_identifier
+      attr_accessor :search_name, :group_metadata, :search_metadata, :base_output_dir, :chain_item, :target_identifier, :ig_metadata
 
-      def initialize(search_name, group_metadata, search_metadata, base_output_dir, chain_item, target_identifier)
-        super(search_name, group_metadata, search_metadata, base_output_dir, chain_item)
+      def initialize(search_name, group_metadata, search_metadata, base_output_dir, chain_item, target_identifier, ig_metadata)
+        super(search_name, group_metadata, search_metadata, base_output_dir, chain_item, ig_metadata)
         self.target_identifier = target_identifier
       end
 
       def test_id
-        "au_core_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_#{target_identifier[:display].downcase}_chain_search_test"
+        "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_#{target_identifier[:display].downcase}_chain_search_test"
       end
 
       def class_name

@@ -11,21 +11,22 @@ module AUCoreTestKit
           ig_metadata.groups
                      .reject { |group| SpecialCases.exclude_group? group }
                      .each do |group|
-            new(group, base_output_dir:).generate
+            new(group, ig_metadata, base_output_dir:).generate
             next unless group.resource == 'MedicationRequest'
 
             # The Medication validation test lives in the MedicationRequest
             # group, so we need to pass in that group's metadata
             medication_group_metadata = ig_metadata.groups.find { |group| group.resource == 'Medication' }
-            new(medication_group_metadata, group, base_output_dir:).generate
+            new(medication_group_metadata, ig_metadata, group, base_output_dir:).generate
           end
         end
       end
 
-      attr_accessor :group_metadata, :medication_request_metadata, :base_output_dir
+      attr_accessor :group_metadata, :medication_request_metadata, :base_output_dir, :ig_metadata
 
-      def initialize(group_metadata, medication_request_metadata = nil, base_output_dir:)
+      def initialize(group_metadata, ig_metadata, medication_request_metadata = nil, base_output_dir:)
         self.group_metadata = group_metadata
+        self.ig_metadata = ig_metadata
         self.medication_request_metadata = medication_request_metadata
         self.base_output_dir = base_output_dir
       end
@@ -71,7 +72,7 @@ module AUCoreTestKit
       end
 
       def test_id
-        "au_core_#{group_metadata.reformatted_version}_#{profile_identifier}_validation_test"
+        "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_validation_test"
       end
 
       def class_name
@@ -79,7 +80,7 @@ module AUCoreTestKit
       end
 
       def module_name
-        "AUCore#{group_metadata.reformatted_version.upcase}"
+        "#{ig_metadata.ig_module_name_prefix}#{group_metadata.reformatted_version.upcase}"
       end
 
       def resource_type

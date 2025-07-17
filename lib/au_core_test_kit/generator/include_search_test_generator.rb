@@ -17,7 +17,7 @@ module AUCoreTestKit
               next unless SpecialCases.search_params_for_include_by_resource[group.resource].include? search[:names]
 
               group.include_params.each do |include_param|
-                new(group, search, base_output_dir, include_param).generate
+                new(group, search, base_output_dir, include_param, ig_metadata).generate
               end
             end
           end
@@ -26,11 +26,12 @@ module AUCoreTestKit
 
       attr_accessor :group_metadata, :search_metadata, :base_output_dir, :include_param
 
-      def initialize(group_metadata, search_metadata, base_output_dir, include_param)
+      def initialize(group_metadata, search_metadata, base_output_dir, include_param, ig_metadata)
         self.group_metadata = group_metadata
         self.search_metadata = search_metadata
         self.base_output_dir = base_output_dir
         self.include_param = include_param
+        self.ig_metadata = ig_metadata
       end
 
       def template
@@ -42,7 +43,7 @@ module AUCoreTestKit
       end
 
       def test_id
-        "au_core_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_param_names_lodash_string}_include_#{search_identifier.downcase}_search_test"
+        "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_param_names_lodash_string}_include_#{search_identifier.downcase}_search_test"
       end
 
       def search_title

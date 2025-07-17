@@ -12,15 +12,16 @@ module AUCoreTestKit
           ig_metadata.ordered_groups
                      .compact
                      .reject { |group| SpecialCases.exclude_group? group }
-                     .each { |group| new(group, base_output_dir).generate }
+                     .each { |group| new(group, base_output_dir, ig_metadata).generate }
         end
       end
 
-      attr_accessor :group_metadata, :base_output_dir
+      attr_accessor :group_metadata, :base_output_dir, :ig_metadata
 
-      def initialize(group_metadata, base_output_dir)
+      def initialize(group_metadata, base_output_dir, ig_metadata)
         self.group_metadata = group_metadata
         self.base_output_dir = base_output_dir
+        self.ig_metadata = ig_metadata
       end
 
       def template
@@ -44,7 +45,7 @@ module AUCoreTestKit
       end
 
       def module_name
-        "AUCore#{group_metadata.reformatted_version.upcase}"
+        "#{ig_metadata.ig_module_name_prefix}#{group_metadata.reformatted_version.upcase}"
       end
 
       def title
@@ -68,7 +69,7 @@ module AUCoreTestKit
       end
 
       def group_id
-        "au_core_#{group_metadata.reformatted_version}_#{profile_identifier}"
+        "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}"
       end
 
       def resource_type

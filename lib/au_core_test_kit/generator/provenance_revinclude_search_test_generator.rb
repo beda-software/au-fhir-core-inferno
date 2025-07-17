@@ -11,16 +11,17 @@ module AUCoreTestKit
           ig_metadata.groups
                      .reject { |group| SpecialCases.exclude_group? group }
                      .select { |group| group.revincludes.include? 'Provenance:target' }
-                     .each { |group| new(group, group.searches.first, base_output_dir).generate }
+                     .each { |group| new(group, group.searches.first, base_output_dir, ig_metadata).generate }
         end
       end
 
-      attr_accessor :group_metadata, :search_metadata, :base_output_dir
+      attr_accessor :group_metadata, :search_metadata, :base_output_dir, :ig_metadata
 
-      def initialize(group_metadata, search_metadata, base_output_dir)
+      def initialize(group_metadata, search_metadata, base_output_dir, ig_metadata)
         self.group_metadata = group_metadata
         self.search_metadata = search_metadata
         self.base_output_dir = base_output_dir
+        self.ig_metadata = ig_metadata
       end
 
       def template
@@ -48,7 +49,7 @@ module AUCoreTestKit
       end
 
       def test_id
-        "au_core_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_search_test"
+        "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_search_test"
       end
 
       def search_identifier
@@ -64,7 +65,7 @@ module AUCoreTestKit
       end
 
       def module_name
-        "AUCore#{group_metadata.reformatted_version.upcase}"
+        "#{ig_metadata.ig_module_name_prefix}#{group_metadata.reformatted_version.upcase}"
       end
 
       def resource_type

@@ -193,7 +193,7 @@ module AUCoreTestKit
           .split('-')
           .map(&:capitalize)
           .join
-          .gsub('AUCore', "AUCore#{ig_metadata.reformatted_version}")
+          .gsub(ig_metadata.ig_module_name_prefix, "#{ig_metadata.ig_module_name_prefix}#{ig_metadata.reformatted_version}")
           .concat('Sequence')
       end
 

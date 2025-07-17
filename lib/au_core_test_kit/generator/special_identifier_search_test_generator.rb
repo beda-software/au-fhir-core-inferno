@@ -27,17 +27,17 @@ module AUCoreTestKit
                     SpecialCases.organization_au_identifiers
                   end
                 identifier_arr.each do |special_identifier|
-                  new(group, search, base_output_dir, special_identifier).generate
+                  new(group, search, base_output_dir, special_identifier, ig_metadata).generate
                 end
               end
           end
         end
       end
 
-      attr_accessor :group_metadata, :search_metadata, :base_output_dir, :special_identifier
+      attr_accessor :group_metadata, :search_metadata, :base_output_dir, :special_identifier, :ig_metadata
 
-      def initialize(group_metadata, search_metadata, base_output_dir, special_identifier)
-        super(group_metadata, search_metadata, base_output_dir)
+      def initialize(group_metadata, search_metadata, base_output_dir, special_identifier, ig_metadata)
+        super(group_metadata, search_metadata, base_output_dir, ig_metadata)
         self.special_identifier = special_identifier
       end
 
@@ -46,7 +46,7 @@ module AUCoreTestKit
       end
 
       def test_id
-        "au_core_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_#{special_identifier[:display].delete('-').downcase}_search_test"
+        "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_#{special_identifier[:display].delete('-').downcase}_search_test"
       end
 
       def class_name

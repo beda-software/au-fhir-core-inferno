@@ -3,7 +3,7 @@
 module AUCoreTestKit
   class Generator
     class IGMetadata
-      attr_accessor :ig_version, :groups
+      attr_accessor :ig_version, :ig_id, :ig_title, :ig_module_name_prefix, :ig_test_id_prefix, :groups
 
       def reformatted_version
         @reformatted_version ||= ig_version.delete('.').gsub('-', '_')
@@ -42,6 +42,10 @@ module AUCoreTestKit
 
       def to_hash
         {
+          ig_id:,
+          ig_title:,
+          ig_module_name_prefix:,
+          ig_test_id_prefix:,
           ig_version:,
           groups: groups.map(&:to_hash)
         }

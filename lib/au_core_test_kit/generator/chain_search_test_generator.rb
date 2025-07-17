@@ -2,10 +2,11 @@
 
 require_relative 'naming'
 require_relative 'special_cases'
+require_relative 'search_test_generator'
 
 module AUCoreTestKit
   class Generator
-    class ChainSearchTestGenerator
+    class ChainSearchTestGenerator < SearchTestGenerator
       class << self
         def generate(ig_metadata, base_output_dir)
           ig_metadata.groups
@@ -21,7 +22,8 @@ module AUCoreTestKit
                   group,
                   group.search_definitions[search_key],
                   base_output_dir,
-                  chain_item
+                  chain_item,
+                  ig_metadata
                 ).generate
               end
             end
@@ -29,14 +31,15 @@ module AUCoreTestKit
         end
       end
 
-      attr_accessor :search_name, :group_metadata, :search_metadata, :base_output_dir, :chain_item
+      attr_accessor :search_name, :group_metadata, :search_metadata, :base_output_dir, :chain_item, :ig_metadata
 
-      def initialize(search_name, group_metadata, search_metadata, base_output_dir, chain_item)
+      def initialize(search_name, group_metadata, search_metadata, base_output_dir, chain_item, ig_metadata)
         self.search_name = search_name
         self.group_metadata = group_metadata
         self.search_metadata = search_metadata
         self.base_output_dir = base_output_dir
         self.chain_item = chain_item
+        self.ig_metadata = ig_metadata
       end
 
       def template
@@ -64,7 +67,7 @@ module AUCoreTestKit
       end
 
       def test_id
-        "au_core_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_chain_search_test"
+        "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_chain_search_test"
       end
 
       def search_identifier
@@ -77,10 +80,6 @@ module AUCoreTestKit
 
       def class_name
         "#{Naming.upper_camel_case_for_profile(group_metadata)}#{search_title}ChainSearchTest"
-      end
-
-      def module_name
-        "AUCore#{group_metadata.reformatted_version.upcase}"
       end
 
       def resource_type

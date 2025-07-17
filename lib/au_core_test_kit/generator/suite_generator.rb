@@ -32,15 +32,15 @@ module AUCoreTestKit
       end
 
       def base_output_file_name
-        'au_core_test_suite.rb'
+        "#{ig_metadata.ig_test_id_prefix}_test_suite.rb"
       end
 
       def class_name
-        'AUCoreTestSuite'
+        "#{ig_metadata.ig_module_name_prefix}TestSuite"
       end
 
       def module_name
-        "AUCore#{ig_metadata.reformatted_version.upcase}"
+        "#{ig_metadata.ig_module_name_prefix}#{ig_metadata.reformatted_version.upcase}"
       end
 
       def output_file_name
@@ -48,20 +48,20 @@ module AUCoreTestKit
       end
 
       def suite_id
-        "au_core_#{ig_metadata.reformatted_version}"
+        "#{ig_metadata.ig_test_id_prefix}_#{ig_metadata.reformatted_version}"
       end
 
       def fhir_api_group_id
-        "au_core_#{ig_metadata.reformatted_version}_fhir_api"
+        "#{ig_metadata.ig_test_id_prefix}_#{ig_metadata.reformatted_version}_fhir_api"
       end
 
       def title
-        "AU Core #{ig_metadata.ig_version}"
+        "#{ig_metadata.ig_title} #{ig_metadata.ig_version}"
       end
 
       def ig_identifier
         version = ig_metadata.ig_version[1..] # Remove leading 'v'
-        "hl7.fhir.au.core##{version}"
+        "#{ig_metadata.ig_id}##{version}"
       end
 
       def ig_link
