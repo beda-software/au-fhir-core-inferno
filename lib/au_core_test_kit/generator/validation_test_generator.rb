@@ -2,10 +2,11 @@
 
 require_relative 'naming'
 require_relative 'special_cases'
+require_relative 'basic_test_generator'
 
 module AUCoreTestKit
   class Generator
-    class ValidationTestGenerator
+    class ValidationTestGenerator < BasicTestGenerator
       class << self
         def generate(ig_metadata, base_output_dir)
           ig_metadata.groups
@@ -33,14 +34,6 @@ module AUCoreTestKit
 
       def template
         @template ||= File.read(File.join(__dir__, 'templates', 'validation.rb.erb'))
-      end
-
-      def output
-        @output ||= ERB.new(template).result(binding)
-      end
-
-      def base_output_file_name
-        "#{class_name.underscore}.rb"
       end
 
       def output_file_directory
@@ -77,14 +70,6 @@ module AUCoreTestKit
 
       def class_name
         "#{Naming.upper_camel_case_for_profile(group_metadata)}ValidationTest"
-      end
-
-      def module_name
-        "#{ig_metadata.ig_module_name_prefix}#{group_metadata.reformatted_version.upcase}"
-      end
-
-      def resource_type
-        group_metadata.resource
       end
 
       def conformance_expectation

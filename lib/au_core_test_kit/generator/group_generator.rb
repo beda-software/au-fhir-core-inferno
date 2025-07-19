@@ -2,11 +2,12 @@
 
 require_relative 'naming'
 require_relative 'special_cases'
+require_relative 'basic_test_generator'
 require_relative '../helpers'
 
 module AUCoreTestKit
   class Generator
-    class GroupGenerator
+    class GroupGenerator < BasicTestGenerator
       class << self
         def generate(ig_metadata, base_output_dir)
           ig_metadata.ordered_groups
@@ -28,24 +29,12 @@ module AUCoreTestKit
         @template ||= File.read(File.join(__dir__, 'templates', 'group.rb.erb'))
       end
 
-      def output
-        @output ||= ERB.new(template).result(binding)
-      end
-
-      def base_output_file_name
-        "#{class_name.underscore}.rb"
-      end
-
       def base_metadata_file_name
         'metadata.yml'
       end
 
       def class_name
         "#{Naming.upper_camel_case_for_profile(group_metadata)}Group"
-      end
-
-      def module_name
-        "#{ig_metadata.ig_module_name_prefix}#{group_metadata.reformatted_version.upcase}"
       end
 
       def title
@@ -70,10 +59,6 @@ module AUCoreTestKit
 
       def group_id
         "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}"
-      end
-
-      def resource_type
-        group_metadata.resource
       end
 
       def search_validation_resource_type

@@ -2,10 +2,11 @@
 
 require_relative 'naming'
 require_relative 'special_cases'
+require_relative 'basic_test_generator'
 
 module AUCoreTestKit
   class Generator
-    class SuiteGenerator
+    class SuiteGenerator < BasicTestGenerator
       class << self
         def generate(ig_metadata, base_output_dir)
           new(ig_metadata, base_output_dir).generate
@@ -25,10 +26,6 @@ module AUCoreTestKit
 
       def template
         @template ||= File.read(File.join(__dir__, 'templates', 'suite.rb.erb'))
-      end
-
-      def output
-        @output ||= ERB.new(template).result(binding)
       end
 
       def base_output_file_name

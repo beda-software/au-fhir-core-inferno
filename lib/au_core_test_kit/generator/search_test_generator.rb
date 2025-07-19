@@ -2,10 +2,11 @@
 
 require_relative 'naming'
 require_relative 'special_cases'
+require_relative 'basic_test_generator'
 
 module AUCoreTestKit
   class Generator
-    class SearchTestGenerator
+    class SearchTestGenerator < BasicTestGenerator
       class << self
         def generate(ig_metadata, base_output_dir)
           ig_metadata.groups
@@ -30,18 +31,6 @@ module AUCoreTestKit
         @template ||= File.read(File.join(__dir__, 'templates', 'search.rb.erb'))
       end
 
-      def output
-        @output ||= ERB.new(template).result(binding)
-      end
-
-      def base_output_file_name
-        "#{class_name.underscore}.rb"
-      end
-
-      def output_file_directory
-        File.join(base_output_dir, profile_identifier)
-      end
-
       def output_file_name
         File.join(output_file_directory, base_output_file_name)
       end
@@ -64,14 +53,6 @@ module AUCoreTestKit
 
       def class_name
         "#{Naming.upper_camel_case_for_profile(group_metadata)}#{search_title}SearchTest"
-      end
-
-      def module_name
-        "#{ig_metadata.ig_module_name_prefix}#{group_metadata.reformatted_version.upcase}"
-      end
-
-      def resource_type
-        group_metadata.resource
       end
 
       def conformance_expectation

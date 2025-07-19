@@ -46,18 +46,6 @@ module AUCoreTestKit
         @template ||= File.read(File.join(__dir__, 'templates', 'chain_search.rb.erb'))
       end
 
-      def output
-        @output ||= ERB.new(template).result(binding)
-      end
-
-      def base_output_file_name
-        "#{class_name.underscore}.rb"
-      end
-
-      def output_file_directory
-        File.join(base_output_dir, profile_identifier)
-      end
-
       def output_file_name
         File.join(output_file_directory, base_output_file_name)
       end
@@ -80,10 +68,6 @@ module AUCoreTestKit
 
       def class_name
         "#{Naming.upper_camel_case_for_profile(group_metadata)}#{search_title}ChainSearchTest"
-      end
-
-      def resource_type
-        group_metadata.resource
       end
 
       def conformance_expectation
