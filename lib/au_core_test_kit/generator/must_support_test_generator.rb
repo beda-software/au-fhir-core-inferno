@@ -27,10 +27,6 @@ module AUCoreTestKit
         @template ||= File.read(File.join(__dir__, 'templates', 'must_support.rb.erb'))
       end
 
-      def output_file_name
-        File.join(output_file_directory, base_output_file_name)
-      end
-
       def read_interaction
         self.class.read_interaction(group_metadata)
       end

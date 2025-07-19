@@ -27,10 +27,6 @@ module AUCoreTestKit
         @template ||= File.read(File.join(__dir__, 'templates', 'reference_resolution.rb.erb'))
       end
 
-      def output_file_name
-        File.join(output_file_directory, base_output_file_name)
-      end
-
       def profile_identifier
         Naming.snake_case_for_profile(group_metadata)
       end

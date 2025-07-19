@@ -10,6 +10,10 @@ module AUCoreTestKit
         File.join(base_output_dir, profile_identifier)
       end
 
+      def output_file_name
+        File.join(output_file_directory, base_output_file_name)
+      end
+
       def base_output_file_name
         "#{class_name.underscore}.rb"
       end

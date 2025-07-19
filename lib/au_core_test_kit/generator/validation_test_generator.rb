@@ -40,10 +40,6 @@ module AUCoreTestKit
         File.join(base_output_dir, directory_name)
       end
 
-      def output_file_name
-        File.join(output_file_directory, base_output_file_name)
-      end
-
       def directory_name
         Naming.snake_case_for_profile(medication_request_metadata || group_metadata)
       end
