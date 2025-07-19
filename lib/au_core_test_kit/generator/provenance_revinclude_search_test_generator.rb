@@ -2,45 +2,31 @@
 
 require_relative 'naming'
 require_relative 'special_cases'
+require_relative 'basic_test_generator'
 
 module AUCoreTestKit
   class Generator
-    class ProvenanceRevincludeSearchTestGenerator
+    class ProvenanceRevincludeSearchTestGenerator < BasicTestGenerator
       class << self
         def generate(ig_metadata, base_output_dir)
           ig_metadata.groups
                      .reject { |group| SpecialCases.exclude_group? group }
                      .select { |group| group.revincludes.include? 'Provenance:target' }
-                     .each { |group| new(group, group.searches.first, base_output_dir).generate }
+                     .each { |group| new(group, group.searches.first, base_output_dir, ig_metadata).generate }
         end
       end
 
-      attr_accessor :group_metadata, :search_metadata, :base_output_dir
+      attr_accessor :group_metadata, :search_metadata, :base_output_dir, :ig_metadata
 
-      def initialize(group_metadata, search_metadata, base_output_dir)
+      def initialize(group_metadata, search_metadata, base_output_dir, ig_metadata)
         self.group_metadata = group_metadata
         self.search_metadata = search_metadata
         self.base_output_dir = base_output_dir
+        self.ig_metadata = ig_metadata
       end
 
       def template
         @template ||= File.read(File.join(__dir__, 'templates', 'provenance_revinclude_search.rb.erb'))
-      end
-
-      def output
-        @output ||= ERB.new(template).result(binding)
-      end
-
-      def base_output_file_name
-        "#{class_name.underscore}.rb"
-      end
-
-      def output_file_directory
-        File.join(base_output_dir, profile_identifier)
-      end
-
-      def output_file_name
-        File.join(output_file_directory, base_output_file_name)
       end
 
       def profile_identifier
@@ -48,7 +34,7 @@ module AUCoreTestKit
       end
 
       def test_id
-        "au_core_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_search_test"
+        "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_search_test"
       end
 
       def search_identifier
@@ -61,14 +47,6 @@ module AUCoreTestKit
 
       def class_name
         "#{Naming.upper_camel_case_for_profile(group_metadata)}#{search_title}SearchTest"
-      end
-
-      def module_name
-        "AUCore#{group_metadata.reformatted_version.upcase}"
-      end
-
-      def resource_type
-        group_metadata.resource
       end
 
       def search_params

@@ -1,4 +1,8 @@
 ---
+:ig_id: hl7.fhir.au.core
+:ig_title: AU Core
+:ig_module_name_prefix: AUCore
+:ig_test_id_prefix: au_core
 :ig_version: v1.1.0-preview
 :groups:
 - :name: au_core_bodyweight

@@ -2,30 +2,32 @@
 
 require_relative 'naming'
 require_relative 'special_cases'
+require_relative 'basic_test_generator'
 
 module AUCoreTestKit
   class Generator
-    class ValidationTestGenerator
+    class ValidationTestGenerator < BasicTestGenerator
       class << self
         def generate(ig_metadata, base_output_dir)
           ig_metadata.groups
                      .reject { |group| SpecialCases.exclude_group? group }
                      .each do |group|
-            new(group, base_output_dir:).generate
+            new(group, ig_metadata, base_output_dir:).generate
             next unless group.resource == 'MedicationRequest'
 
             # The Medication validation test lives in the MedicationRequest
             # group, so we need to pass in that group's metadata
             medication_group_metadata = ig_metadata.groups.find { |group| group.resource == 'Medication' }
-            new(medication_group_metadata, group, base_output_dir:).generate
+            new(medication_group_metadata, ig_metadata, group, base_output_dir:).generate
           end
         end
       end
 
-      attr_accessor :group_metadata, :medication_request_metadata, :base_output_dir
+      attr_accessor :group_metadata, :medication_request_metadata, :base_output_dir, :ig_metadata
 
-      def initialize(group_metadata, medication_request_metadata = nil, base_output_dir:)
+      def initialize(group_metadata, ig_metadata, medication_request_metadata = nil, base_output_dir:)
         self.group_metadata = group_metadata
+        self.ig_metadata = ig_metadata
         self.medication_request_metadata = medication_request_metadata
         self.base_output_dir = base_output_dir
       end
@@ -34,20 +36,8 @@ module AUCoreTestKit
         @template ||= File.read(File.join(__dir__, 'templates', 'validation.rb.erb'))
       end
 
-      def output
-        @output ||= ERB.new(template).result(binding)
-      end
-
-      def base_output_file_name
-        "#{class_name.underscore}.rb"
-      end
-
       def output_file_directory
         File.join(base_output_dir, directory_name)
-      end
-
-      def output_file_name
-        File.join(output_file_directory, base_output_file_name)
       end
 
       def directory_name
@@ -71,19 +61,11 @@ module AUCoreTestKit
       end
 
       def test_id
-        "au_core_#{group_metadata.reformatted_version}_#{profile_identifier}_validation_test"
+        "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_validation_test"
       end
 
       def class_name
         "#{Naming.upper_camel_case_for_profile(group_metadata)}ValidationTest"
-      end
-
-      def module_name
-        "AUCore#{group_metadata.reformatted_version.upcase}"
-      end
-
-      def resource_type
-        group_metadata.resource
       end
 
       def conformance_expectation

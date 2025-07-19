@@ -2,43 +2,29 @@
 
 require_relative 'naming'
 require_relative 'special_cases'
+require_relative 'basic_test_generator'
 
 module AUCoreTestKit
   class Generator
-    class MustSupportTestGenerator
+    class MustSupportTestGenerator < BasicTestGenerator
       class << self
         def generate(ig_metadata, base_output_dir)
           ig_metadata.groups
                      .reject { |group| SpecialCases.exclude_group? group }
-                     .each { |group| new(group, base_output_dir).generate }
+                     .each { |group| new(group, base_output_dir, ig_metadata).generate }
         end
       end
 
-      attr_accessor :group_metadata, :base_output_dir
+      attr_accessor :group_metadata, :base_output_dir, :ig_metadata
 
-      def initialize(group_metadata, base_output_dir)
+      def initialize(group_metadata, base_output_dir, ig_metadata)
         self.group_metadata = group_metadata
         self.base_output_dir = base_output_dir
+        self.ig_metadata = ig_metadata
       end
 
       def template
         @template ||= File.read(File.join(__dir__, 'templates', 'must_support.rb.erb'))
-      end
-
-      def output
-        @output ||= ERB.new(template).result(binding)
-      end
-
-      def base_output_file_name
-        "#{class_name.underscore}.rb"
-      end
-
-      def output_file_directory
-        File.join(base_output_dir, profile_identifier)
-      end
-
-      def output_file_name
-        File.join(output_file_directory, base_output_file_name)
       end
 
       def read_interaction
@@ -50,19 +36,11 @@ module AUCoreTestKit
       end
 
       def test_id
-        "au_core_#{group_metadata.reformatted_version}_#{profile_identifier}_must_support_test"
+        "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_must_support_test"
       end
 
       def class_name
         "#{Naming.upper_camel_case_for_profile(group_metadata)}MustSupportTest"
-      end
-
-      def module_name
-        "AUCore#{group_metadata.reformatted_version.upcase}"
-      end
-
-      def resource_type
-        group_metadata.resource
       end
 
       def resource_collection_string
