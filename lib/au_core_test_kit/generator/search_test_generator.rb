@@ -20,15 +20,13 @@ module AUCoreTestKit
 
       attr_accessor :group_metadata, :search_metadata, :base_output_dir, :ig_metadata
 
+      self.template_type = 'search'
+
       def initialize(group_metadata, search_metadata, base_output_dir, ig_metadata)
         self.group_metadata = group_metadata
         self.search_metadata = search_metadata
         self.base_output_dir = base_output_dir
         self.ig_metadata = ig_metadata
-      end
-
-      def template
-        @template ||= File.read(File.join(__dir__, 'templates', 'search.rb.erb'))
       end
 
       def profile_identifier

@@ -25,15 +25,13 @@ module AUCoreTestKit
 
       attr_accessor :group_metadata, :medication_request_metadata, :base_output_dir, :ig_metadata
 
+      self.template_type = 'validation'
+
       def initialize(group_metadata, ig_metadata, medication_request_metadata = nil, base_output_dir:)
         self.group_metadata = group_metadata
         self.ig_metadata = ig_metadata
         self.medication_request_metadata = medication_request_metadata
         self.base_output_dir = base_output_dir
-      end
-
-      def template
-        @template ||= File.read(File.join(__dir__, 'templates', 'validation.rb.erb'))
       end
 
       def output_file_directory

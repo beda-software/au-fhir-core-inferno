@@ -15,6 +15,8 @@ module AUCoreTestKit
 
       attr_accessor :ig_metadata, :base_output_dir
 
+      self.template_type = 'suite'
+
       def initialize(ig_metadata, base_output_dir)
         self.ig_metadata = ig_metadata
         self.base_output_dir = base_output_dir
@@ -22,10 +24,6 @@ module AUCoreTestKit
 
       def version_specific_message_filters
         []
-      end
-
-      def template
-        @template ||= File.read(File.join(__dir__, 'templates', 'suite.rb.erb'))
       end
 
       def base_output_file_name

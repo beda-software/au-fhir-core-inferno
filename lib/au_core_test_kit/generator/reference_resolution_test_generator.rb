@@ -17,14 +17,12 @@ module AUCoreTestKit
 
       attr_accessor :group_metadata, :base_output_dir, :ig_metadata
 
+      self.template_type = 'reference_resolution'
+
       def initialize(group_metadata, base_output_dir, ig_metadata)
         self.group_metadata = group_metadata
         self.base_output_dir = base_output_dir
         self.ig_metadata = ig_metadata
-      end
-
-      def template
-        @template ||= File.read(File.join(__dir__, 'templates', 'reference_resolution.rb.erb'))
       end
 
       def profile_identifier

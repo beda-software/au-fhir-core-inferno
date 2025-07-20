@@ -19,14 +19,12 @@ module AUCoreTestKit
 
       attr_accessor :group_metadata, :base_output_dir, :ig_metadata
 
+      self.template_type = 'group'
+
       def initialize(group_metadata, base_output_dir, ig_metadata)
         self.group_metadata = group_metadata
         self.base_output_dir = base_output_dir
         self.ig_metadata = ig_metadata
-      end
-
-      def template
-        @template ||= File.read(File.join(__dir__, 'templates', 'group.rb.erb'))
       end
 
       def base_metadata_file_name

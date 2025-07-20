@@ -33,6 +33,8 @@ module AUCoreTestKit
 
       attr_accessor :search_name, :group_metadata, :search_metadata, :base_output_dir, :chain_item, :ig_metadata
 
+      self.template_type = 'chain_search'
+
       def initialize(search_name, group_metadata, search_metadata, base_output_dir, chain_item, ig_metadata)
         self.search_name = search_name
         self.group_metadata = group_metadata
@@ -40,10 +42,6 @@ module AUCoreTestKit
         self.base_output_dir = base_output_dir
         self.chain_item = chain_item
         self.ig_metadata = ig_metadata
-      end
-
-      def template
-        @template ||= File.read(File.join(__dir__, 'templates', 'chain_search.rb.erb'))
       end
 
       def profile_identifier

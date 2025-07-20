@@ -36,13 +36,11 @@ module AUCoreTestKit
 
       attr_accessor :group_metadata, :search_metadata, :base_output_dir, :special_identifier, :ig_metadata
 
+      self.template_type = 'special_identifier_search'
+
       def initialize(group_metadata, search_metadata, base_output_dir, special_identifier, ig_metadata)
         super(group_metadata, search_metadata, base_output_dir, ig_metadata)
         self.special_identifier = special_identifier
-      end
-
-      def template
-        @template ||= File.read(File.join(__dir__, 'templates', 'special_identifier_search.rb.erb'))
       end
 
       def test_id

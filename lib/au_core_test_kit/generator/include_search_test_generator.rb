@@ -26,16 +26,14 @@ module AUCoreTestKit
 
       attr_accessor :group_metadata, :search_metadata, :base_output_dir, :include_param
 
+      self.template_type = 'include'
+
       def initialize(group_metadata, search_metadata, base_output_dir, include_param, ig_metadata)
         self.group_metadata = group_metadata
         self.search_metadata = search_metadata
         self.base_output_dir = base_output_dir
         self.include_param = include_param
         self.ig_metadata = ig_metadata
-      end
-
-      def template
-        @template ||= File.read(File.join(__dir__, 'templates', 'include.rb.erb'))
       end
 
       def search_identifier
