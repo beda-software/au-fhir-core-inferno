@@ -118,16 +118,6 @@ module AUCoreTestKit
         end
       end
 
-      def generate
-        FileUtils.mkdir_p(output_file_directory)
-        File.open(output_file_name, 'w') { |f| f.write(output) }
-
-        group_metadata.add_test(
-          id: test_id,
-          file_name: base_output_file_name
-        )
-      end
-
       def title
         "Server returns valid results for #{resource_type} search by #{search_param_name_string} (chained parameters)"
       end

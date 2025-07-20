@@ -52,6 +52,16 @@ module AUCoreTestKit
         group_metadata.resource
       end
 
+      def generate
+        FileUtils.mkdir_p(output_file_directory)
+        File.open(output_file_name, 'w') { |f| f.write(output) }
+
+        group_metadata.add_test(
+          id: test_id,
+          file_name: base_output_file_name
+        )
+      end
+
       private
 
       def template_file_name
