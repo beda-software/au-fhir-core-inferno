@@ -43,10 +43,6 @@ module AUCoreTestKit
         self.special_identifier = special_identifier
       end
 
-      def test_id
-        "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_#{special_identifier[:display].delete('-').downcase}_search_test"
-      end
-
       def class_name
         "#{Naming.upper_camel_case_for_profile(group_metadata)}#{search_title}#{special_identifier[:display].delete('-')}SearchTest"
       end

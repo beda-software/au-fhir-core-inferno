@@ -25,10 +25,6 @@ module AUCoreTestKit
         self.ig_metadata = ig_metadata
       end
 
-      def test_id
-        "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_reference_resolution_test"
-      end
-
       def class_name
         "#{Naming.upper_camel_case_for_profile(group_metadata)}ReferenceResolutionTest"
       end

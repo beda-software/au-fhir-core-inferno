@@ -40,10 +40,6 @@ module AUCoreTestKit
         search_metadata[:names].join('_').tr('-', '_')
       end
 
-      def test_id
-        "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_param_names_lodash_string}_include_#{search_identifier.downcase}_search_test"
-      end
-
       def search_title
         search_identifier.camelize
       end

@@ -14,6 +14,7 @@ module AUCoreTestKit
         'suite' => 'suite.rb.erb',
         'include' => 'include.rb.erb',
         'special_identifier_search' => 'special_identifier_search.rb.erb',
+        'special_identifier_chain_search' => 'special_identifier_search.rb.erb',
         'multiple_or_search' => 'multiple_or_search.rb.erb',
         'reference_resolution' => 'reference_resolution.rb.erb',
         'read' => 'read.rb.erb',
@@ -54,6 +55,39 @@ module AUCoreTestKit
 
       def resource_type
         group_metadata.resource
+      end
+
+      def test_id
+        case template_type
+        when 'read'
+          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_read_test"
+        when 'multiple_and_search'
+          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_multiple_and_search_test"
+        when 'search'
+          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_search_test"
+        when 'chain_search'
+          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_chain_search_test"
+        when 'validation'
+          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_validation_test"
+        when 'include'
+          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_param_names_lodash_string}_include_#{search_identifier.downcase}_search_test"
+        when 'special_identifier_search'
+          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_#{special_identifier[:display].delete('-').downcase}_search_test"
+        when 'special_identifier_chain_search'
+          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_#{target_identifier[:display].downcase}_chain_search_test"
+        when 'multiple_or_search'
+          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_multiple_or_search_test"
+        when 'reference_resolution'
+          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_reference_resolution_test"
+        when 'provenance_revinclude_search'
+          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_search_test"
+        when 'must_support'
+          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_must_support_test"
+        when 'suite'
+        when 'group'
+        else
+          raise("Unknown test_id for type: #{template_type}")
+        end
       end
 
       def generate
