@@ -51,10 +51,6 @@ module AUCoreTestKit
         File.join(base_output_dir, profile_identifier, base_metadata_file_name)
       end
 
-      def profile_identifier
-        Naming.snake_case_for_profile(group_metadata)
-      end
-
       def group_id
         "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}"
       end

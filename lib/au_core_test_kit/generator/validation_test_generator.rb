@@ -42,10 +42,6 @@ module AUCoreTestKit
         Naming.snake_case_for_profile(medication_request_metadata || group_metadata)
       end
 
-      def profile_identifier
-        Naming.snake_case_for_profile(group_metadata)
-      end
-
       def profile_url
         group_metadata.profile_url
       end

@@ -32,10 +32,6 @@ module AUCoreTestKit
         self.ig_metadata = ig_metadata
       end
 
-      def profile_identifier
-        Naming.snake_case_for_profile(group_metadata)
-      end
-
       def test_id
         "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_multiple_and_search_test"
       end

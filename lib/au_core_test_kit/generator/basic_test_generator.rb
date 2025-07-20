@@ -44,6 +44,10 @@ module AUCoreTestKit
         @output ||= ERB.new(template).result(binding)
       end
 
+      def profile_identifier
+        Naming.snake_case_for_profile(group_metadata)
+      end
+
       def module_name
         "#{ig_metadata.ig_module_name_prefix}#{group_metadata.reformatted_version.upcase}"
       end

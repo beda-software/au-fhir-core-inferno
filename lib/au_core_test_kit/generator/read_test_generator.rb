@@ -34,10 +34,6 @@ module AUCoreTestKit
         self.class.read_interaction(group_metadata)
       end
 
-      def profile_identifier
-        Naming.snake_case_for_profile(group_metadata)
-      end
-
       def test_id
         "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_read_test"
       end
