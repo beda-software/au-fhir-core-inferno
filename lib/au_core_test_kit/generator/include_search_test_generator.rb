@@ -26,7 +26,7 @@ module AUCoreTestKit
 
       attr_accessor :group_metadata, :search_metadata, :base_output_dir, :include_param
 
-      self.template_type = 'include'
+      self.template_type = TEMPLATE_TYPES[:INCLUDE]
 
       def initialize(group_metadata, search_metadata, base_output_dir, include_param, ig_metadata)
         self.group_metadata = group_metadata

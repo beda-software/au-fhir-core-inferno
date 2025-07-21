@@ -38,6 +38,8 @@ module AUCoreTestKit
 
       attr_accessor :search_name, :group_metadata, :search_metadata, :base_output_dir, :chain_item, :target_identifier, :ig_metadata
 
+      self.template_type = TEMPLATE_TYPES[:SPECIAL_IDENTIFIER_CHAIN_SEARCH]
+
       def initialize(search_name, group_metadata, search_metadata, base_output_dir, chain_item, target_identifier, ig_metadata)
         super(search_name, group_metadata, search_metadata, base_output_dir, chain_item, ig_metadata)
         self.target_identifier = target_identifier

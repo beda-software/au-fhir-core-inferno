@@ -18,7 +18,7 @@ module AUCoreTestKit
 
       attr_accessor :group_metadata, :search_metadata, :base_output_dir, :ig_metadata
 
-      self.template_type = 'provenance_revinclude_search'
+      self.template_type = TEMPLATE_TYPES[:PROVENANCE_REVINCLUDE_SEARCH]
 
       def initialize(group_metadata, search_metadata, base_output_dir, ig_metadata)
         self.group_metadata = group_metadata

@@ -20,7 +20,7 @@ module AUCoreTestKit
 
       attr_accessor :group_metadata, :search_metadata, :base_output_dir, :ig_metadata
 
-      self.template_type = 'search'
+      self.template_type = TEMPLATE_TYPES[:SEARCH]
 
       def initialize(group_metadata, search_metadata, base_output_dir, ig_metadata)
         self.group_metadata = group_metadata

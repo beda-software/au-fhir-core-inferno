@@ -17,7 +17,7 @@ module AUCoreTestKit
 
       attr_accessor :group_metadata, :base_output_dir, :ig_metadata
 
-      self.template_type = 'must_support'
+      self.template_type = TEMPLATE_TYPES[:MUST_SUPPORT]
 
       def initialize(group_metadata, base_output_dir, ig_metadata)
         self.group_metadata = group_metadata

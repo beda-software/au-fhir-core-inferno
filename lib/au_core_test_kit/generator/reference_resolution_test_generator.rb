@@ -17,7 +17,7 @@ module AUCoreTestKit
 
       attr_accessor :group_metadata, :base_output_dir, :ig_metadata
 
-      self.template_type = 'reference_resolution'
+      self.template_type = TEMPLATE_TYPES[:REFERENCE_RESOLUTION]
 
       def initialize(group_metadata, base_output_dir, ig_metadata)
         self.group_metadata = group_metadata

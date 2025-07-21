@@ -36,7 +36,7 @@ module AUCoreTestKit
 
       attr_accessor :group_metadata, :search_metadata, :base_output_dir, :special_identifier, :ig_metadata
 
-      self.template_type = 'special_identifier_search'
+      self.template_type = TEMPLATE_TYPES[:SPECIAL_IDENTIFIER_SEARCH]
 
       def initialize(group_metadata, search_metadata, base_output_dir, special_identifier, ig_metadata)
         super(group_metadata, search_metadata, base_output_dir, ig_metadata)

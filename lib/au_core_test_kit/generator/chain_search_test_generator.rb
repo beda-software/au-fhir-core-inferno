@@ -33,7 +33,7 @@ module AUCoreTestKit
 
       attr_accessor :search_name, :group_metadata, :search_metadata, :base_output_dir, :chain_item, :ig_metadata
 
-      self.template_type = 'chain_search'
+      self.template_type = TEMPLATE_TYPES[:CHAIN_SEARCH]
 
       def initialize(search_name, group_metadata, search_metadata, base_output_dir, chain_item, ig_metadata)
         self.search_name = search_name

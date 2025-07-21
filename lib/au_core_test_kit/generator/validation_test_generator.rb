@@ -25,7 +25,7 @@ module AUCoreTestKit
 
       attr_accessor :group_metadata, :medication_request_metadata, :base_output_dir, :ig_metadata
 
-      self.template_type = 'validation'
+      self.template_type = TEMPLATE_TYPES[:VALIDATION]
 
       def initialize(group_metadata, ig_metadata, medication_request_metadata = nil, base_output_dir:)
         self.group_metadata = group_metadata

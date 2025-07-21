@@ -2,26 +2,12 @@
 
 require_relative 'naming'
 require_relative 'special_cases'
+require_relative 'generator_constants'
 
 module AUCoreTestKit
   class Generator
     class BasicTestGenerator
-      TEMPLATE_FILES_MAP = {
-        'multiple_and_search' => 'multiple_and_search.rb.erb',
-        'search' => 'search.rb.erb',
-        'chain_search' => 'chain_search.rb.erb',
-        'validation' => 'validation.rb.erb',
-        'suite' => 'suite.rb.erb',
-        'include' => 'include.rb.erb',
-        'special_identifier_search' => 'special_identifier_search.rb.erb',
-        'special_identifier_chain_search' => 'special_identifier_search.rb.erb',
-        'multiple_or_search' => 'multiple_or_search.rb.erb',
-        'reference_resolution' => 'reference_resolution.rb.erb',
-        'read' => 'read.rb.erb',
-        'provenance_revinclude_search' => 'provenance_revinclude_search.rb.erb',
-        'group' => 'group.rb.erb',
-        'must_support' => 'must_support.rb.erb'
-      }.freeze
+      include GeneratorConstants
 
       class_attribute :template_type
 
@@ -59,31 +45,31 @@ module AUCoreTestKit
 
       def test_id
         case template_type
-        when 'read'
+        when TEMPLATE_TYPES[:READ]
           "#{basic_test_id}_read_test"
-        when 'multiple_and_search'
+        when TEMPLATE_TYPES[:MULTIPLE_AND_SEARCH]
           "#{basic_test_id_with_search}_multiple_and_search_test"
-        when 'search'
+        when TEMPLATE_TYPES[:SEARCH]
           "#{basic_test_id_with_search}_search_test"
-        when 'chain_search'
+        when TEMPLATE_TYPES[:CHAIN_SEARCH]
           "#{basic_test_id_with_search}_chain_search_test"
-        when 'validation'
+        when TEMPLATE_TYPES[:VALIDATION]
           "#{basic_test_id}_validation_test"
-        when 'include'
+        when TEMPLATE_TYPES[:INCLUDE]
           "#{basic_test_id}_#{search_param_names_lodash_string}_include_#{search_identifier.downcase}_search_test"
-        when 'special_identifier_search'
+        when TEMPLATE_TYPES[:SPECIAL_IDENTIFIER_SEARCH]
           "#{basic_test_id}_#{search_identifier}_#{special_identifier[:display].delete('-').downcase}_search_test"
-        when 'multiple_or_search'
+        when TEMPLATE_TYPES[:MULTIPLE_OR_SEARCH]
           "#{basic_test_id_with_search}_multiple_or_search_test"
-        when 'reference_resolution'
+        when TEMPLATE_TYPES[:REFERENCE_RESOLUTION]
           "#{basic_test_id}_reference_resolution_test"
-        when 'provenance_revinclude_search'
+        when TEMPLATE_TYPES[:PROVENANCE_REVINCLUDE_SEARCH]
           "#{basic_test_id_with_search}_search_test"
-        when 'must_support'
+        when TEMPLATE_TYPES[:MUST_SUPPORT]
           "#{basic_test_id}_must_support_test"
-        when 'special_identifier_chain_search'
-        when 'suite'
-        when 'group'
+        when TEMPLATE_TYPES[:SPECIAL_IDENTIFIER_CHAIN_SEARCH]
+        when TEMPLATE_TYPES[:SUITE]
+        when TEMPLATE_TYPES[:GROUP]
         else
           raise("Unknown test_id for type: #{template_type}")
         end
@@ -91,33 +77,33 @@ module AUCoreTestKit
 
       def class_name
         case template_type
-        when 'read'
+        when TEMPLATE_TYPES[:READ]
           "#{basic_class_name}ReadTest"
-        when 'multiple_and_search'
+        when TEMPLATE_TYPES[:MULTIPLE_AND_SEARCH]
           "#{basic_class_name_with_search_capitalize}MultipleAndSearchTest"
-        when 'search'
+        when TEMPLATE_TYPES[:SEARCH]
           "#{basic_class_name_with_search}SearchTest"
-        when 'chain_search'
+        when TEMPLATE_TYPES[:CHAIN_SEARCH]
           "#{basic_class_name_with_search}ChainSearchTest"
-        when 'validation'
+        when TEMPLATE_TYPES[:VALIDATION]
           "#{basic_class_name}ValidationTest"
-        when 'include'
+        when TEMPLATE_TYPES[:INCLUDE]
           "#{basic_class_name_with_search}Include#{includes.first['target_resource']}Test"
-        when 'special_identifier_search'
+        when TEMPLATE_TYPES[:SPECIAL_IDENTIFIER_SEARCH]
           "#{basic_class_name_with_search}#{special_identifier[:display].delete('-')}SearchTest"
-        when 'multiple_or_search'
+        when TEMPLATE_TYPES[:MULTIPLE_OR_SEARCH]
           "#{basic_class_name_with_search_capitalize}MultipleOrSearchTest"
-        when 'reference_resolution'
+        when TEMPLATE_TYPES[:REFERENCE_RESOLUTION]
           "#{basic_class_name}ReferenceResolutionTest"
-        when 'provenance_revinclude_search'
+        when TEMPLATE_TYPES[:PROVENANCE_REVINCLUDE_SEARCH]
           "#{basic_class_name_with_search}SearchTest"
-        when 'must_support'
+        when TEMPLATE_TYPES[:MUST_SUPPORT]
           "#{basic_class_name}MustSupportTest"
-        when 'suite'
+        when TEMPLATE_TYPES[:SUITE]
           "#{ig_metadata.ig_module_name_prefix}TestSuite"
-        when 'group'
+        when TEMPLATE_TYPES[:GROUP]
           "#{Naming.upper_camel_case_for_profile(group_metadata)}Group"
-        when 'special_identifier_chain_search'
+        when TEMPLATE_TYPES[:SPECIAL_IDENTIFIER_CHAIN_SEARCH]
         else
           raise("Unknown class_name for type: #{template_type}")
         end

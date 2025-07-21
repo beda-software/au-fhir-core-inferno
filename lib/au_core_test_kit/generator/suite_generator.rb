@@ -15,7 +15,7 @@ module AUCoreTestKit
 
       attr_accessor :ig_metadata, :base_output_dir
 
-      self.template_type = 'suite'
+      self.template_type = TEMPLATE_TYPES[:SUITE]
 
       def initialize(ig_metadata, base_output_dir)
         self.ig_metadata = ig_metadata
