@@ -45,28 +45,15 @@ module AUCoreTestKit
 
       def test_id
         case template_type
-        when TEMPLATE_TYPES[:READ]
-          "#{basic_test_id}_read_test"
-        when TEMPLATE_TYPES[:MULTIPLE_AND_SEARCH]
-          "#{basic_test_id_with_search}_multiple_and_search_test"
-        when TEMPLATE_TYPES[:SEARCH]
-          "#{basic_test_id_with_search}_search_test"
-        when TEMPLATE_TYPES[:CHAIN_SEARCH]
-          "#{basic_test_id_with_search}_chain_search_test"
-        when TEMPLATE_TYPES[:VALIDATION]
-          "#{basic_test_id}_validation_test"
+        when TEMPLATE_TYPES[:READ], TEMPLATE_TYPES[:VALIDATION], TEMPLATE_TYPES[:REFERENCE_RESOLUTION], TEMPLATE_TYPES[:MUST_SUPPORT]
+          "#{basic_test_id}_#{TEST_ID_SUFFIXES[template_type]}"
+        when TEMPLATE_TYPES[:MULTIPLE_AND_SEARCH], TEMPLATE_TYPES[:SEARCH], TEMPLATE_TYPES[:CHAIN_SEARCH],
+             TEMPLATE_TYPES[:MULTIPLE_OR_SEARCH], TEMPLATE_TYPES[:PROVENANCE_REVINCLUDE_SEARCH]
+          "#{basic_test_id_with_search}_#{TEST_ID_SUFFIXES[template_type]}"
         when TEMPLATE_TYPES[:INCLUDE]
           "#{basic_test_id}_#{search_param_names_lodash_string}_include_#{search_identifier.downcase}_search_test"
         when TEMPLATE_TYPES[:SPECIAL_IDENTIFIER_SEARCH]
           "#{basic_test_id}_#{search_identifier}_#{special_identifier[:display].delete('-').downcase}_search_test"
-        when TEMPLATE_TYPES[:MULTIPLE_OR_SEARCH]
-          "#{basic_test_id_with_search}_multiple_or_search_test"
-        when TEMPLATE_TYPES[:REFERENCE_RESOLUTION]
-          "#{basic_test_id}_reference_resolution_test"
-        when TEMPLATE_TYPES[:PROVENANCE_REVINCLUDE_SEARCH]
-          "#{basic_test_id_with_search}_search_test"
-        when TEMPLATE_TYPES[:MUST_SUPPORT]
-          "#{basic_test_id}_must_support_test"
         when TEMPLATE_TYPES[:SPECIAL_IDENTIFIER_CHAIN_SEARCH]
         when TEMPLATE_TYPES[:SUITE]
         when TEMPLATE_TYPES[:GROUP]
@@ -77,28 +64,16 @@ module AUCoreTestKit
 
       def class_name
         case template_type
-        when TEMPLATE_TYPES[:READ]
-          "#{basic_class_name}ReadTest"
-        when TEMPLATE_TYPES[:MULTIPLE_AND_SEARCH]
-          "#{basic_class_name_with_search_capitalize}MultipleAndSearchTest"
-        when TEMPLATE_TYPES[:SEARCH]
-          "#{basic_class_name_with_search}SearchTest"
-        when TEMPLATE_TYPES[:CHAIN_SEARCH]
-          "#{basic_class_name_with_search}ChainSearchTest"
-        when TEMPLATE_TYPES[:VALIDATION]
-          "#{basic_class_name}ValidationTest"
+        when TEMPLATE_TYPES[:READ], TEMPLATE_TYPES[:VALIDATION], TEMPLATE_TYPES[:REFERENCE_RESOLUTION], TEMPLATE_TYPES[:MUST_SUPPORT]
+          "#{basic_class_name}#{CLASS_NAME_SUFFIXES[template_type]}"
+        when TEMPLATE_TYPES[:SEARCH], TEMPLATE_TYPES[:CHAIN_SEARCH], TEMPLATE_TYPES[:PROVENANCE_REVINCLUDE_SEARCH]
+          "#{basic_class_name_with_search}#{CLASS_NAME_SUFFIXES[template_type]}"
+        when TEMPLATE_TYPES[:MULTIPLE_AND_SEARCH], TEMPLATE_TYPES[:MULTIPLE_OR_SEARCH]
+          "#{basic_class_name_with_search_capitalize}#{CLASS_NAME_SUFFIXES[template_type]}"
         when TEMPLATE_TYPES[:INCLUDE]
           "#{basic_class_name_with_search}Include#{includes.first['target_resource']}Test"
         when TEMPLATE_TYPES[:SPECIAL_IDENTIFIER_SEARCH]
           "#{basic_class_name_with_search}#{special_identifier[:display].delete('-')}SearchTest"
-        when TEMPLATE_TYPES[:MULTIPLE_OR_SEARCH]
-          "#{basic_class_name_with_search_capitalize}MultipleOrSearchTest"
-        when TEMPLATE_TYPES[:REFERENCE_RESOLUTION]
-          "#{basic_class_name}ReferenceResolutionTest"
-        when TEMPLATE_TYPES[:PROVENANCE_REVINCLUDE_SEARCH]
-          "#{basic_class_name_with_search}SearchTest"
-        when TEMPLATE_TYPES[:MUST_SUPPORT]
-          "#{basic_class_name}MustSupportTest"
         when TEMPLATE_TYPES[:SUITE]
           "#{ig_metadata.ig_module_name_prefix}TestSuite"
         when TEMPLATE_TYPES[:GROUP]
