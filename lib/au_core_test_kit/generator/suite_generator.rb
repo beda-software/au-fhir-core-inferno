@@ -30,10 +30,6 @@ module AUCoreTestKit
         "#{ig_metadata.ig_test_id_prefix}_test_suite.rb"
       end
 
-      def class_name
-        "#{ig_metadata.ig_module_name_prefix}TestSuite"
-      end
-
       def module_name
         "#{ig_metadata.ig_module_name_prefix}#{ig_metadata.reformatted_version.upcase}"
       end

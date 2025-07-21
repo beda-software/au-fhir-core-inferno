@@ -37,10 +37,6 @@ module AUCoreTestKit
         search_identifier.camelize
       end
 
-      def class_name
-        "#{Naming.upper_camel_case_for_profile(group_metadata)}#{search_title}SearchTest"
-      end
-
       def conformance_expectation
         search_metadata[:expectation]
       end

@@ -60,33 +60,66 @@ module AUCoreTestKit
       def test_id
         case template_type
         when 'read'
-          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_read_test"
+          "#{basic_test_id}_read_test"
         when 'multiple_and_search'
-          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_multiple_and_search_test"
+          "#{basic_test_id_with_search}_multiple_and_search_test"
         when 'search'
-          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_search_test"
+          "#{basic_test_id_with_search}_search_test"
         when 'chain_search'
-          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_chain_search_test"
+          "#{basic_test_id_with_search}_chain_search_test"
         when 'validation'
-          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_validation_test"
+          "#{basic_test_id}_validation_test"
         when 'include'
-          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_param_names_lodash_string}_include_#{search_identifier.downcase}_search_test"
+          "#{basic_test_id}_#{search_param_names_lodash_string}_include_#{search_identifier.downcase}_search_test"
         when 'special_identifier_search'
-          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_#{special_identifier[:display].delete('-').downcase}_search_test"
-        when 'special_identifier_chain_search'
-          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_#{target_identifier[:display].downcase}_chain_search_test"
+          "#{basic_test_id}_#{search_identifier}_#{special_identifier[:display].delete('-').downcase}_search_test"
         when 'multiple_or_search'
-          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_multiple_or_search_test"
+          "#{basic_test_id_with_search}_multiple_or_search_test"
         when 'reference_resolution'
-          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_reference_resolution_test"
+          "#{basic_test_id}_reference_resolution_test"
         when 'provenance_revinclude_search'
-          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_search_test"
+          "#{basic_test_id_with_search}_search_test"
         when 'must_support'
-          "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}_must_support_test"
+          "#{basic_test_id}_must_support_test"
+        when 'special_identifier_chain_search'
         when 'suite'
         when 'group'
         else
           raise("Unknown test_id for type: #{template_type}")
+        end
+      end
+
+      def class_name
+        case template_type
+        when 'read'
+          "#{basic_class_name}ReadTest"
+        when 'multiple_and_search'
+          "#{basic_class_name_with_search_capitalize}MultipleAndSearchTest"
+        when 'search'
+          "#{basic_class_name_with_search}SearchTest"
+        when 'chain_search'
+          "#{basic_class_name_with_search}ChainSearchTest"
+        when 'validation'
+          "#{basic_class_name}ValidationTest"
+        when 'include'
+          "#{basic_class_name_with_search}Include#{includes.first['target_resource']}Test"
+        when 'special_identifier_search'
+          "#{basic_class_name_with_search}#{special_identifier[:display].delete('-')}SearchTest"
+        when 'multiple_or_search'
+          "#{basic_class_name_with_search_capitalize}MultipleOrSearchTest"
+        when 'reference_resolution'
+          "#{basic_class_name}ReferenceResolutionTest"
+        when 'provenance_revinclude_search'
+          "#{basic_class_name_with_search}SearchTest"
+        when 'must_support'
+          "#{basic_class_name}MustSupportTest"
+        when 'suite'
+          "#{ig_metadata.ig_module_name_prefix}TestSuite"
+        when 'group'
+          "#{Naming.upper_camel_case_for_profile(group_metadata)}Group"
+        when 'special_identifier_chain_search'
+        else
+          raise("Unknown class_name for type: #{template_type}")
         end
       end
 
@@ -104,6 +137,26 @@ module AUCoreTestKit
 
       def template_file_name
         TEMPLATE_FILES_MAP[template_type] || raise("Unknown template type: #{template_type}")
+      end
+
+      def basic_test_id
+        "#{ig_metadata.ig_test_id_prefix}_#{group_metadata.reformatted_version}_#{profile_identifier}"
+      end
+
+      def basic_test_id_with_search
+        "#{basic_test_id}_#{search_identifier}"
+      end
+
+      def basic_class_name
+        Naming.upper_camel_case_for_profile(group_metadata)
+      end
+
+      def basic_class_name_with_search
+        "#{basic_class_name}#{search_title}"
+      end
+
+      def basic_class_name_with_search_capitalize
+        "#{basic_class_name}#{search_title.capitalize}"
       end
     end
   end

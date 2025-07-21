@@ -34,10 +34,6 @@ module AUCoreTestKit
         self.class.read_interaction(group_metadata)
       end
 
-      def class_name
-        "#{Naming.upper_camel_case_for_profile(group_metadata)}ReadTest"
-      end
-
       def resource_collection_string
         if group_metadata.delayed? && resource_type != 'Provenance'
           "scratch.dig(:references, '#{resource_type}')"

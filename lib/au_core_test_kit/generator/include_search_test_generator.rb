@@ -44,10 +44,6 @@ module AUCoreTestKit
         search_identifier.camelize
       end
 
-      def class_name
-        "#{Naming.upper_camel_case_for_profile(group_metadata)}#{search_title}Include#{includes.first['target_resource']}Test"
-      end
-
       def conformance_expectation
         'SHOULD'
       end

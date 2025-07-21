@@ -40,10 +40,6 @@ module AUCoreTestKit
         search_identifier
       end
 
-      def class_name
-        "#{Naming.upper_camel_case_for_profile(group_metadata)}#{search_title.capitalize}MultipleAndSearchTest"
-      end
-
       def conformance_expectation
         search_metadata[:multiple_and]
       end

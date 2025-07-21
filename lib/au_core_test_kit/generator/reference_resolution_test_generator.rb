@@ -25,10 +25,6 @@ module AUCoreTestKit
         self.ig_metadata = ig_metadata
       end
 
-      def class_name
-        "#{Naming.upper_camel_case_for_profile(group_metadata)}ReferenceResolutionTest"
-      end
-
       def resource_collection_string
         'scratch_resources[:all]'
       end

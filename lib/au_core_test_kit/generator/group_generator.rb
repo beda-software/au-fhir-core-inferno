@@ -31,10 +31,6 @@ module AUCoreTestKit
         'metadata.yml'
       end
 
-      def class_name
-        "#{Naming.upper_camel_case_for_profile(group_metadata)}Group"
-      end
-
       def title
         group_metadata.title
       end

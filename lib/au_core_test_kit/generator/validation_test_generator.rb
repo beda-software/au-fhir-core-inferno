@@ -54,10 +54,6 @@ module AUCoreTestKit
         group_metadata.profile_version
       end
 
-      def class_name
-        "#{Naming.upper_camel_case_for_profile(group_metadata)}ValidationTest"
-      end
-
       def conformance_expectation
         read_interaction[:expectation]
       end

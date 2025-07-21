@@ -40,10 +40,6 @@ module AUCoreTestKit
         search_identifier
       end
 
-      def class_name
-        "#{Naming.upper_camel_case_for_profile(group_metadata)}#{search_title.capitalize}MultipleOrSearchTest"
-      end
-
       def conformance_expectation
         # NOTE: https://github.com/hl7au/au-fhir-core-inferno/issues/61
         return 'SHOULD' if search_name == 'status' && (resource_type == 'Procedure' || resource_type == 'Observation')
