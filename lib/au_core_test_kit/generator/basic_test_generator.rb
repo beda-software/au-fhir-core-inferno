@@ -121,10 +121,7 @@ module AUCoreTestKit
       end
 
       def url_version
-        case group_metadata.version
-        when 'v0.3.0-ballot'
-          '0.3.0-ballot'
-        end
+        group_metadata.version.delete_prefix('v')
       end
     end
   end

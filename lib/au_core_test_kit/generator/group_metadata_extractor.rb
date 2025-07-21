@@ -35,6 +35,7 @@ module AUCoreTestKit
             profile_url:,
             profile_name:,
             profile_version:,
+            ig_id:,
             title:,
             short_description:,
             interactions:,
@@ -197,6 +198,9 @@ module AUCoreTestKit
           .concat('Sequence')
       end
 
+      def ig_id
+        ig_metadata.ig_id
+      end
       def version
         ig_metadata.ig_version
       end
