@@ -119,6 +119,13 @@ module AUCoreTestKit
       def basic_class_name_with_search_capitalize
         "#{basic_class_name}#{search_title.capitalize}"
       end
+
+      def url_version
+        case group_metadata.version
+        when 'v0.3.0-ballot'
+          '0.3.0-ballot'
+        end
+      end
     end
   end
 end

@@ -258,13 +258,6 @@ module AUCoreTestKit
         end
       end
 
-      def url_version
-        case group_metadata.version
-        when 'v0.3.0-ballot'
-          '0.3.0-ballot'
-        end
-      end
-
       def search_test_properties_string
         search_properties
           .map { |key, value| "#{' ' * 8}#{key}: #{value}" }

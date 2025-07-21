@@ -99,13 +99,6 @@ module AUCoreTestKit
           .join(",\n")
       end
 
-      def url_version
-        case group_metadata.version
-        when 'v0.3.0-ballot'
-          '0.3.0-ballot'
-        end
-      end
-
       def title
         "Server returns valid results for #{resource_type} search by #{search_param_name_string} (chained parameters)"
       end
