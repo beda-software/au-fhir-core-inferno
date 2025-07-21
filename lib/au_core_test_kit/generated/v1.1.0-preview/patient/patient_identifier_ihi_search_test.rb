@@ -14,7 +14,7 @@ identifier (IHI) on the Patient resource. This test
 will pass if resources are returned and match the search criteria. If
 none are returned, the test is skipped.
 
-[AU Core Server CapabilityStatement](http://hl7.org.au/fhir/core//CapabilityStatement-au-core-server.html)
+[AU Core Server CapabilityStatement](http://hl7.org.au/fhir/core/1.1.0-preview/CapabilityStatement-au-core-server.html)
 )
 
       id :au_core_v110_preview_patient_identifier_ihi_search_test

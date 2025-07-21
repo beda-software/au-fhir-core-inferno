@@ -328,3 +328,4 @@
 :id: au_core_v200_draft_bodytemp
 :file_name: bodytemp_group.rb
 :delayed_references: []
+:ig_id: hl7.fhir.au.core

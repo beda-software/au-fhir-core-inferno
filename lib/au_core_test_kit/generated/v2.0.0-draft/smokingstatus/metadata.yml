@@ -285,3 +285,4 @@
 :id: au_core_v200_draft_smokingstatus
 :file_name: smokingstatus_group.rb
 :delayed_references: []
+:ig_id: hl7.fhir.au.core

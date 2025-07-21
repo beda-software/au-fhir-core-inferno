@@ -257,3 +257,4 @@
 :id: au_core_v100_condition
 :file_name: condition_group.rb
 :delayed_references: []
+:ig_id: hl7.fhir.au.core

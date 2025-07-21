@@ -291,3 +291,4 @@
 :id: au_core_v100_patient
 :file_name: patient_group.rb
 :delayed_references: []
+:ig_id: hl7.fhir.au.core

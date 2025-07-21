@@ -232,3 +232,4 @@
 - :path: reasonReference
   :resources:
   - DiagnosticReport
+:ig_id: hl7.fhir.au.core

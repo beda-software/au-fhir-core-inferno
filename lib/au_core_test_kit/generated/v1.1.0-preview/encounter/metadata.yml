@@ -302,3 +302,4 @@
 - :path: serviceProvider
   :resources:
   - Organization
+:ig_id: hl7.fhir.au.core

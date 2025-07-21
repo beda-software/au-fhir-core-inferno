@@ -325,3 +325,4 @@
 :id: au_core_v110_preview_heartrate
 :file_name: heartrate_group.rb
 :delayed_references: []
+:ig_id: hl7.fhir.au.core

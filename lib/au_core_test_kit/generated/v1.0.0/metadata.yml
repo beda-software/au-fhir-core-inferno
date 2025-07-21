@@ -289,6 +289,7 @@
     - http://hl7.org/fhir/StructureDefinition/MolecularSequence
     - http://hl7.org/fhir/StructureDefinition/vitalsigns
   :delayed_references: []
+  :ig_id: hl7.fhir.au.core
 - :name: au_core_bloodpressure
   :class_name: AuCoreBloodpressureSequence
   :version: v1.0.0
@@ -607,6 +608,7 @@
     - http://hl7.org/fhir/StructureDefinition/MolecularSequence
     - http://hl7.org/fhir/StructureDefinition/vitalsigns
   :delayed_references: []
+  :ig_id: hl7.fhir.au.core
 - :name: au_core_bodyheight
   :class_name: AuCoreBodyheightSequence
   :version: v1.0.0
@@ -891,6 +893,7 @@
     - http://hl7.org/fhir/StructureDefinition/MolecularSequence
     - http://hl7.org/fhir/StructureDefinition/vitalsigns
   :delayed_references: []
+  :ig_id: hl7.fhir.au.core
 - :name: au_core_diagnosticresult_path
   :class_name: AuCoreDiagnosticresultPathSequence
   :version: v1.0.0
@@ -1157,6 +1160,7 @@
     - PractitionerRole
     - Organization
     - RelatedPerson
+  :ig_id: hl7.fhir.au.core
 - :name: au_core_bodytemp
   :class_name: AuCoreBodytempSequence
   :version: v1.0.0
@@ -1441,6 +1445,7 @@
     - http://hl7.org/fhir/StructureDefinition/MolecularSequence
     - http://hl7.org/fhir/StructureDefinition/vitalsigns
   :delayed_references: []
+  :ig_id: hl7.fhir.au.core
 - :name: au_core_heartrate
   :class_name: AuCoreHeartrateSequence
   :version: v1.0.0
@@ -1722,6 +1727,7 @@
     - http://hl7.org/fhir/StructureDefinition/MolecularSequence
     - http://hl7.org/fhir/StructureDefinition/vitalsigns
   :delayed_references: []
+  :ig_id: hl7.fhir.au.core
 - :name: au_core_waistcircum
   :class_name: AuCoreWaistcircumSequence
   :version: v1.0.0
@@ -2001,6 +2007,7 @@
     - http://hl7.org/fhir/StructureDefinition/MolecularSequence
     - http://hl7.org/fhir/StructureDefinition/vitalsigns
   :delayed_references: []
+  :ig_id: hl7.fhir.au.core
 - :name: au_core_resprate
   :class_name: AuCoreResprateSequence
   :version: v1.0.0
@@ -2282,6 +2289,7 @@
     - http://hl7.org/fhir/StructureDefinition/MolecularSequence
     - http://hl7.org/fhir/StructureDefinition/vitalsigns
   :delayed_references: []
+  :ig_id: hl7.fhir.au.core
 - :name: au_core_diagnosticresult
   :class_name: AuCoreDiagnosticresultSequence
   :version: v1.0.0
@@ -2535,6 +2543,7 @@
     - PractitionerRole
     - Organization
     - RelatedPerson
+  :ig_id: hl7.fhir.au.core
 - :name: au_core_smokingstatus
   :class_name: AuCoreSmokingstatusSequence
   :version: v1.0.0
@@ -2776,6 +2785,7 @@
     - http://hl7.org/fhir/StructureDefinition/Observation
     - http://hl7.org/fhir/StructureDefinition/MolecularSequence
   :delayed_references: []
+  :ig_id: hl7.fhir.au.core
 - :name: au_core_allergyintolerance
   :class_name: AuCoreAllergyintoleranceSequence
   :version: v1.0.0
@@ -2909,6 +2919,7 @@
     - http://hl7.org/fhir/StructureDefinition/Practitioner
     - http://hl7.org/fhir/StructureDefinition/PractitionerRole
   :delayed_references: []
+  :ig_id: hl7.fhir.au.core
 - :name: au_core_condition
   :class_name: AuCoreConditionSequence
   :version: v1.0.0
@@ -3124,6 +3135,7 @@
     :profiles:
     - http://hl7.org/fhir/StructureDefinition/Resource
   :delayed_references: []
+  :ig_id: hl7.fhir.au.core
 - :name: au_core_encounter
   :class_name: AuCoreEncounterSequence
   :version: v1.0.0
@@ -3387,6 +3399,7 @@
   - :path: serviceProvider
     :resources:
     - Organization
+  :ig_id: hl7.fhir.au.core
 - :name: au_core_immunization
   :class_name: AuCoreImmunizationSequence
   :version: v1.0.0
@@ -3575,6 +3588,7 @@
     :profiles:
     - http://hl7.org/fhir/StructureDefinition/Organization
   :delayed_references: []
+  :ig_id: hl7.fhir.au.core
 - :name: au_core_location
   :class_name: AuCoreLocationSequence
   :version: v1.0.0
@@ -3715,6 +3729,7 @@
   - :path: managingOrganization
     :resources:
     - Organization
+  :ig_id: hl7.fhir.au.core
 - :name: au_core_medication
   :class_name: AuCoreMedicationSequence
   :version: v1.0.0
@@ -3753,6 +3768,7 @@
     :profiles:
     - http://hl7.org/fhir/StructureDefinition/Organization
   :delayed_references: []
+  :ig_id: hl7.fhir.au.core
 - :name: au_core_medicationrequest
   :class_name: AuCoreMedicationrequestSequence
   :version: v1.0.0
@@ -4027,6 +4043,7 @@
     - PractitionerRole
     - Organization
     - RelatedPerson
+  :ig_id: hl7.fhir.au.core
 - :name: au_core_organization
   :class_name: AuCoreOrganizationSequence
   :version: v1.0.0
@@ -4127,6 +4144,7 @@
     :profiles:
     - http://hl7.org/fhir/StructureDefinition/Endpoint
   :delayed_references: []
+  :ig_id: hl7.fhir.au.core
 - :name: au_core_patient
   :class_name: AuCorePatientSequence
   :version: v1.0.0
@@ -4370,6 +4388,7 @@
     - http://hl7.org/fhir/StructureDefinition/Patient
     - http://hl7.org/fhir/StructureDefinition/RelatedPerson
   :delayed_references: []
+  :ig_id: hl7.fhir.au.core
 - :name: au_core_practitioner
   :class_name: AuCorePractitionerSequence
   :version: v1.0.0
@@ -4460,6 +4479,7 @@
     :profiles:
     - http://hl7.org/fhir/StructureDefinition/Organization
   :delayed_references: []
+  :ig_id: hl7.fhir.au.core
 - :name: au_core_practitionerrole
   :class_name: AuCorePractitionerroleSequence
   :version: v1.0.0
@@ -4624,6 +4644,7 @@
   - :path: organization
     :resources:
     - Organization
+  :ig_id: hl7.fhir.au.core
 - :name: au_core_procedure
   :class_name: AuCoreProcedureSequence
   :version: v1.0.0
@@ -4849,6 +4870,7 @@
     - http://hl7.org/fhir/StructureDefinition/Medication
     - http://hl7.org/fhir/StructureDefinition/Substance
   :delayed_references: []
+  :ig_id: hl7.fhir.au.core
 - :name: au_relatedperson
   :class_name: AuRelatedpersonSequence
   :version: v1.0.0
@@ -4884,3 +4906,4 @@
     :profiles:
     - http://hl7.org/fhir/StructureDefinition/Patient
   :delayed_references: []
+  :ig_id: hl7.fhir.au.core

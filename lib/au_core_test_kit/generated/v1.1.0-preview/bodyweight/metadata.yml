@@ -328,3 +328,4 @@
 :id: au_core_v110_preview_bodyweight
 :file_name: bodyweight_group.rb
 :delayed_references: []
+:ig_id: hl7.fhir.au.core

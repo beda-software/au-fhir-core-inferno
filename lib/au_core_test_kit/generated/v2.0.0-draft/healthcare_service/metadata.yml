@@ -124,3 +124,4 @@
 :id: au_core_v200_draft_healthcare_service
 :file_name: healthcare_service_group.rb
 :delayed_references: []
+:ig_id: hl7.fhir.au.core

@@ -21,7 +21,7 @@ the form `practitioner=[id]` as well as `practitioner=Practitioner/[id]`. The tw
 different forms are expected to return the same number of results. AU
 Core requires that both forms are supported by AU Core responders.
 
-[AU Core Server CapabilityStatement](http://hl7.org.au/fhir/core//CapabilityStatement-au-core-server.html)
+[AU Core Server CapabilityStatement](http://hl7.org.au/fhir/core/1.0.0/CapabilityStatement-au-core-server.html)
 
       )
 

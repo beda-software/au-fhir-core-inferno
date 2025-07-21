@@ -14,7 +14,7 @@ module AUCoreTestKit
 patient:Patient.identifier (IHI) on the MedicationRequest resource. This test
 will pass if the server returns a success response to the request.
 
-[AU Core Server CapabilityStatement](http://hl7.org.au/fhir/core//CapabilityStatement-au-core-server.html)
+[AU Core Server CapabilityStatement](http://hl7.org.au/fhir/core/1.0.0/CapabilityStatement-au-core-server.html)
 )
 
       id :au_core_v100_medication_request_patient_ihi_chain_search_test

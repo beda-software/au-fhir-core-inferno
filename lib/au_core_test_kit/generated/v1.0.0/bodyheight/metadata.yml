@@ -328,3 +328,4 @@
 :id: au_core_v100_bodyheight
 :file_name: bodyheight_group.rb
 :delayed_references: []
+:ig_id: hl7.fhir.au.core

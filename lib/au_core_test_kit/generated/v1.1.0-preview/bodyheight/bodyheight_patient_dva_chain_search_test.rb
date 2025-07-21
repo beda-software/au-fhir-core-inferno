@@ -14,7 +14,7 @@ module AUCoreTestKit
 patient:Patient.identifier (DVA) on the Observation resource. This test
 will pass if the server returns a success response to the request.
 
-[AU Core Server CapabilityStatement](http://hl7.org.au/fhir/core//CapabilityStatement-au-core-server.html)
+[AU Core Server CapabilityStatement](http://hl7.org.au/fhir/core/1.1.0-preview/CapabilityStatement-au-core-server.html)
 )
 
       id :au_core_v110_preview_bodyheight_patient_dva_chain_search_test

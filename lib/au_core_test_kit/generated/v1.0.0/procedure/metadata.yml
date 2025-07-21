@@ -263,3 +263,4 @@
 :id: au_core_v100_procedure
 :file_name: procedure_group.rb
 :delayed_references: []
+:ig_id: hl7.fhir.au.core
