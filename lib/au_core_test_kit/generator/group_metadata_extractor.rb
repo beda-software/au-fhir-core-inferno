@@ -5,17 +5,19 @@ require_relative 'ig_metadata'
 require_relative 'must_support_metadata_extractor'
 require_relative 'search_metadata_extractor'
 require_relative 'terminology_binding_metadata_extractor'
+require_relative 'generator_config_keeper'
 
 module AUCoreTestKit
   class Generator
     class GroupMetadataExtractor
-      attr_accessor :resource_capabilities, :profile_url, :ig_metadata, :ig_resources
+      attr_accessor :resource_capabilities, :profile_url, :ig_metadata, :ig_resources, :config_keeper
 
       def initialize(resource_capabilities, profile_url, ig_metadata, ig_resources)
         self.resource_capabilities = resource_capabilities
         self.profile_url = profile_url
         self.ig_metadata = ig_metadata
         self.ig_resources = ig_resources
+        self.config_keeper = GeneratorConfigKeeper.new
       end
 
       def group_metadata
@@ -98,65 +100,24 @@ module AUCoreTestKit
 
       ### BEGIN SPECIAL CASES ###
 
-      ALL_VERSION_CATEGORY_FIRST_PROFILES = [
-        'http://hl7.org.au/fhir/core/StructureDefinition/au-core-diagnosticresult-path',
-        'http://hl7.org.au/fhir/core/StructureDefinition/au-core-diagnosticresult-imag'
-      ].freeze
-
-      ALL_VERSION_PATIENT_FIRST_PROFILES = [
-        'http://hl7.org.au/fhir/core/StructureDefinition/au-core-observation',
-      ].freeze
-
-      ALL_VERSION_ID_FIRST_PROFILES = [
-        'http://hl7.org.au/fhir/core/StructureDefinition/au-core-organization',
-        'http://hl7.org.au/fhir/core/StructureDefinition/au-core-practitioner'
-      ].freeze
-
-      ALL_VERSION_NAME_FIRST_PROFILES = [
-        'http://hl7.org.au/fhir/core/StructureDefinition/au-core-healthcareservice'
-      ].freeze
-
-      # Usage example
-      VERSION_SPECIFIC_CATEGORY_FIRST_PROFILES = {
-        # 'http://hl7.org.au/fhir/core/StructureDefinition/au-core-healthcareservice' => ['v030']
-      }.freeze
-
       def name_first_profile?
-        ALL_VERSION_NAME_FIRST_PROFILES.include? profile_url
+        config_keeper.name_first_profile?(profile_url)
       end
 
       def id_first_profile?
-        ALL_VERSION_ID_FIRST_PROFILES.include? profile_url
+        config_keeper.id_first_profile?(profile_url)
       end
 
       def category_first_profile?
-        ALL_VERSION_CATEGORY_FIRST_PROFILES.include?(profile_url) ||
-          VERSION_SPECIFIC_CATEGORY_FIRST_PROFILES[profile_url]&.include?(reformatted_version)
+        config_keeper.category_first_profile?(profile_url, reformatted_version)
       end
 
       def patient_first_profile?
-        ALL_VERSION_PATIENT_FIRST_PROFILES.include?(profile_url)
+        config_keeper.patient_first_profile?(profile_url)
       end
 
       def first_search_params
-        @first_search_params ||=
-          if category_first_profile?
-            %w[patient category]
-          elsif patient_first_profile?
-            ['patient']
-          elsif id_first_profile?
-            ['_id']
-          elsif name_first_profile?
-            ['name']
-          elsif resource == 'Observation'
-            %w[patient code]
-          elsif resource == 'MedicationRequest'
-            ['patient']
-          elsif resource == 'CareTeam'
-            %w[patient status]
-          else
-            ['patient']
-          end
+        @first_search_params ||= config_keeper.first_search_params(profile_url, resource, reformatted_version)
       end
 
       def handle_special_cases
