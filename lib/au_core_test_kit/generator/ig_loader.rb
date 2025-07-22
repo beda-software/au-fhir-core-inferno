@@ -7,14 +7,16 @@ require 'rubygems/package'
 require 'zlib'
 require 'json'
 require_relative 'ig_resources'
+require_relative 'generator_config_keeper'
 
 module AUCoreTestKit
   class Generator
     class IGLoader
-      attr_accessor :ig_file_name
+      attr_accessor :ig_file_name, :config
 
       def initialize(ig_file_name)
         self.ig_file_name = ig_file_name
+        self.config = GeneratorConfigKeeper.new
       end
 
       def ig_resources
@@ -52,7 +54,7 @@ module AUCoreTestKit
 
           ig_resources.add(resource)
         end
-        json_files = Dir.glob(File.join(Dir.pwd, 'lib', 'au_core_test_kit', 'igs', '*.json'))
+        json_files = Dir.glob(File.join(Dir.pwd, config.ig_json_files_path))
         json_files.each do |file_path|
           file_content = File.read(file_path)
           bundle = FHIR.from_contents(file_content)

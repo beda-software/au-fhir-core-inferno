@@ -3,8 +3,10 @@
 require 'nokogiri'
 require 'json'
 require 'net/http'
+require_relative 'generator_config_keeper'
 
 url = 'http://hl7.org.au/fhir/core/history.html'
+config = AUCoreTestKit::Generator::GeneratorConfigKeeper.new
 
 begin
   uri = URI.parse(url)
@@ -33,7 +35,7 @@ begin
 
         package_url = "#{item['path']}/package.tgz"
         file_name = "#{version}.tgz"
-        output_directory = 'lib/au_core_test_kit/igs'
+        output_directory = config.ig_output_directory_path
 
         Dir.mkdir(output_directory) unless File.directory?(output_directory)
 

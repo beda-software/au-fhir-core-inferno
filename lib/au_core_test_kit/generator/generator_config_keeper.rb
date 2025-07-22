@@ -51,6 +51,14 @@ module AUCoreTestKit
         paths['main_file']
       end
 
+      def ig_output_directory_path
+        paths['ig_output_directory']
+      end
+
+      def ig_json_files_path
+        paths['ig_json_files']
+      end
+
       def naming_mappings
         configs['NAMING'] || {}
       end
