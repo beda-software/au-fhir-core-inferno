@@ -8,6 +8,10 @@ module AUCoreTestKit
         DiagnosticReport
       ].freeze
 
+      VERSION_SPECIFIC_RESOURCES_TO_EXCLUDE = {
+        'v1.0.0' => %w[Medication RelatedPerson]
+      }.freeze
+
       PROFILES_TO_EXCLUDE = [].freeze
 
       PATIENT_IDENTIFIERS = [
@@ -59,41 +63,6 @@ module AUCoreTestKit
       MULTIPLE_OR_AND_SEARCH_BY_TARGET_RESOURCE = {
         'PractitionerRole' => [['practitioner']]
       }.freeze
-
-      class << self
-        def exclude_group?(group)
-          case group.version
-          when 'v1.0.0'
-            %w[Medication RelatedPerson].include?(group.resource)
-          else
-            RESOURCES_TO_EXCLUDE.include?(group.resource)
-          end
-        end
-
-        def patient_au_identifiers
-          PATIENT_IDENTIFIERS
-        end
-
-        def practitioner_au_identifiers
-          PRACTITIONER_IDENTIFIERS
-        end
-
-        def practitionerrole_au_identifiers
-          PRACTITIONER_ROLE_IDENTIFIERS
-        end
-
-        def organization_au_identifiers
-          ORGANIZATION_IDENTIFIERS
-        end
-
-        def search_params_for_include_by_resource
-          SEARCH_PARAMS_FOR_INCLUDE_BY_RESOURCE
-        end
-
-        def multiple_or_and_search_by_target_resource
-          MULTIPLE_OR_AND_SEARCH_BY_TARGET_RESOURCE
-        end
-      end
     end
   end
 end

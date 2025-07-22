@@ -68,7 +68,14 @@ module AUCoreTestKit
 
       def groups
         ig_metadata.ordered_groups.compact
-                   .reject { |group| SpecialCases.exclude_group? group }
+                   .reject do |group|
+                     version_specific_resources = SpecialCases::VERSION_SPECIFIC_RESOURCES_TO_EXCLUDE[group.version]
+                     if version_specific_resources
+                       version_specific_resources.include?(group.resource)
+                     else
+                       SpecialCases::RESOURCES_TO_EXCLUDE.include?(group.resource)
+                     end
+                   end
       end
 
       def group_id_list

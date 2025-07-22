@@ -9,7 +9,14 @@ module AUCoreTestKit
     class SpecialIdentifierSearchTestGenerator < SearchTestGenerator
       class << self
         def generate(ig_metadata, base_output_dir)
-          ig_metadata.groups.reject { |group| SpecialCases.exclude_group? group }
+          ig_metadata.groups.reject do |group|
+            version_specific_resources = SpecialCases::VERSION_SPECIFIC_RESOURCES_TO_EXCLUDE[group.version]
+            if version_specific_resources
+              version_specific_resources.include?(group.resource)
+            else
+              SpecialCases::RESOURCES_TO_EXCLUDE.include?(group.resource)
+            end
+          end
             .select { |group| ['au_core_patient', 'au_core_practitioner', 'au_core_organization', 'au_core_practitionerrole'].include? group.name }
             .select { |group| group.searches.present? }
             .each do |group|
@@ -18,13 +25,13 @@ module AUCoreTestKit
                 identifier_arr =
                   case group.name
                   when 'au_core_patient'
-                    SpecialCases.patient_au_identifiers
+                    SpecialCases::PATIENT_IDENTIFIERS
                   when 'au_core_practitioner'
-                    SpecialCases.practitioner_au_identifiers
+                    SpecialCases::PRACTITIONER_IDENTIFIERS
                   when 'au_core_practitionerrole'
-                    SpecialCases.practitionerrole_au_identifiers
+                    SpecialCases::PRACTITIONER_ROLE_IDENTIFIERS
                   when 'au_core_organization'
-                    SpecialCases.organization_au_identifiers
+                    SpecialCases::ORGANIZATION_IDENTIFIERS
                   end
                 identifier_arr.each do |special_identifier|
                   new(group, search, base_output_dir, special_identifier, ig_metadata).generate

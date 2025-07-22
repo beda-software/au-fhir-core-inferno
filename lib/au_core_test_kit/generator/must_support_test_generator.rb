@@ -10,7 +10,14 @@ module AUCoreTestKit
       class << self
         def generate(ig_metadata, base_output_dir)
           ig_metadata.groups
-                     .reject { |group| SpecialCases.exclude_group? group }
+                     .reject do |group|
+                       version_specific_resources = SpecialCases::VERSION_SPECIFIC_RESOURCES_TO_EXCLUDE[group.version]
+                       if version_specific_resources
+                         version_specific_resources.include?(group.resource)
+                       else
+                         SpecialCases::RESOURCES_TO_EXCLUDE.include?(group.resource)
+                       end
+                     end
                      .each { |group| new(group, base_output_dir, ig_metadata).generate }
         end
       end

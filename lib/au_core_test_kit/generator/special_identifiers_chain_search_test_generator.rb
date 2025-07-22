@@ -19,7 +19,7 @@ module AUCoreTestKit
               current_search_definition[:chain].each do |chain_item|
                 next unless chain_item[:target] == 'Patient'
 
-                SpecialCases.patient_au_identifiers.each do |target_identifier|
+                SpecialCases::PATIENT_IDENTIFIERS.each do |target_identifier|
                   new(
                     search_key.to_s,
                     group,
