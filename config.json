@@ -2,7 +2,7 @@
   "hl7.fhir.au.core": {
     "metadata": {
       "description": "Configuration for Australian FHIR Core profiles testing",
-      "last_updated": "2025-07-21",
+      "last_updated": "2025-07-22",
       "version": "1.0.0"
     },
     "version": [
@@ -10,6 +10,10 @@
       "1.1.0-preview",
       "2.0.0-draft"
     ],
+    "paths": {
+      "ig_packages": "lib/au_core_test_kit/igs/*.tgz",
+      "main_file": "lib/au_core_test_kit.rb"
+    },
     "configs": {
       "NAMING": {
         "_description": "Maps FHIR structure definition URLs to constant names used in the codebase",

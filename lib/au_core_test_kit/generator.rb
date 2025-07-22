@@ -19,11 +19,14 @@ require_relative 'generator/chain_search_test_generator'
 require_relative 'generator/special_identifier_search_test_generator'
 require_relative 'generator/special_identifiers_chain_search_test_generator'
 require_relative 'generator/include_search_test_generator'
+require_relative 'generator/generator_config_keeper'
 
 module AUCoreTestKit
   class Generator
     def self.generate
-      ig_packages = Dir.glob(File.join(Dir.pwd, 'lib', 'au_core_test_kit', 'igs', '*.tgz'))
+      config = GeneratorConfigKeeper.new
+      ig_packages_pattern = config.ig_packages_path
+      ig_packages = Dir.glob(File.join(Dir.pwd, ig_packages_pattern))
 
       ig_packages.each do |ig_package|
         new(ig_package).generate
@@ -132,7 +135,9 @@ module AUCoreTestKit
     end
 
     def use_tests
-      file_path = File.expand_path('../au_core_test_kit.rb', __dir__)
+      config = GeneratorConfigKeeper.new
+      main_file = config.main_file_path
+      file_path = File.expand_path(main_file, Dir.pwd)
 
       file_content = File.read(file_path)
       string_to_add = "require_relative '#{base_output_dir.split('/opt/inferno/lib/').last}/au_core_test_suite'"

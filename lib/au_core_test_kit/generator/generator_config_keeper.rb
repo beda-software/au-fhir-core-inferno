@@ -39,6 +39,18 @@ module AUCoreTestKit
         @versions
       end
 
+      def paths
+        @config['paths'] || {}
+      end
+
+      def ig_packages_path
+        paths['ig_packages']
+      end
+
+      def main_file_path
+        paths['main_file']
+      end
+
       def naming_mappings
         configs['NAMING'] || {}
       end
