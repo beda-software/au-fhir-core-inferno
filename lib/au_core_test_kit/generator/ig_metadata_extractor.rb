@@ -6,13 +6,14 @@ require_relative 'group_metadata_extractor'
 module AUCoreTestKit
   class Generator
     class IGMetadataExtractor
-      attr_accessor :ig_resources, :metadata
+      attr_accessor :ig_resources, :metadata, :config_keeper
 
       def initialize(ig_resources)
         self.ig_resources = ig_resources
         add_missing_supported_profiles
         remove_extra_supported_profiles
         self.metadata = IGMetadata.new
+        self.config_keeper = GeneratorConfigKeeper.new
       end
 
       def extract
@@ -64,12 +65,13 @@ module AUCoreTestKit
       end
 
       def add_metadata_from_resources
-        profile_arr_to_skip = [
-          'http://hl7.org.au/fhir/StructureDefinition/au-specimen', # https://github.com/hl7au/au-fhir-core-inferno/issues/244
-          'http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire',
-          'http://hl7.org.au/fhir/core/StructureDefinition/au-core-norelevantfinding',
-          'http://hl7.org/fhir/StructureDefinition/DocumentReference' # https://github.com/hl7au/au-fhir-core-inferno/issues/216
-        ]
+        # profile_arr_to_skip = [
+        #   'http://hl7.org.au/fhir/StructureDefinition/au-specimen', # https://github.com/hl7au/au-fhir-core-inferno/issues/244
+        #   'http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire',
+        #   'http://hl7.org.au/fhir/core/StructureDefinition/au-core-norelevantfinding',
+        #   'http://hl7.org/fhir/StructureDefinition/DocumentReference' # https://github.com/hl7au/au-fhir-core-inferno/issues/216
+        # ]
+        profile_arr_to_skip = config_keeper.skip_profiles
 
         # NOTE: We use two different groups because of CapabilityStatement.rest.resource
         # in AU Core IG supports two ways to describe the profile:
