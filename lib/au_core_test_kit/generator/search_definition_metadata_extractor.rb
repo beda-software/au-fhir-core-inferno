@@ -134,6 +134,7 @@ module AUCoreTestKit
       end
 
       def comparators
+        # TODO: Move to the config file
         # NOTE: Hard-coded values are used because the comparator expectation
         # does not exist in the machine-readable files, but it does exist in the narrative.
         # NOTE: https://github.com/hl7au/au-fhir-core-inferno/issues/48
@@ -196,6 +197,7 @@ module AUCoreTestKit
       end
 
       def multiple_or_expectation
+        # TODO: Move to the config file
         # NOTE: Hard-coded values are used because the multipleOr attributes
         # do not exist in the machine-readable files, but they do exist in the narrative.
         # NOTE: https://github.com/hl7au/au-fhir-core-inferno/issues/61
@@ -224,6 +226,7 @@ module AUCoreTestKit
       end
 
       def multiple_and_expectation
+        # TODO: Move to the config file
         # NOTE: Hard-coded values are used because the multipleAnd attributes
         # do not exist in the machine-readable files, but they do exist in the narrative.
         # NOTE: https://github.com/hl7au/au-fhir-core-inferno/issues/62
@@ -249,6 +252,7 @@ module AUCoreTestKit
       end
 
       def values
+        # TODO: Move to the config file
         fixed_diagnostic_result_values = %w[251739003 24701-5]
         fixed_date_value = %w[ge1950-01-01 le2050-01-01 gt1950-01-01 lt2050-01-01]
         fixed_datetime_value = %w[ge1950-01-01T00:00:00.000Z le2050-01-01T23:59:59.999Z gt1950-01-01T00:00:00.000Z lt2050-01-01T23:59:59.999Z]
