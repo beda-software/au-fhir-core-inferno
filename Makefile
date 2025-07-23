@@ -58,3 +58,13 @@ ig_download:
 	$(compose) $(inferno) ruby lib/au_core_test_kit/generator/ig_download.rb
 
 full_develop_restart: stop down generate setup run
+
+build_uploadfig:
+	$(compose) -f compose.uploadfig.yaml build
+
+download_ig_deps:
+	@for tgz_file in lib/au_core_test_kit/igs/*.tgz; do \
+		filename=$$(basename $$tgz_file .tgz); \
+		echo "Processing $$tgz_file..."; \
+		$(compose) -f compose.uploadfig.yaml run --rm uploadfig UploadFIG -t -s $$tgz_file --includeReferencedDependencies -of lib/au_core_test_kit/igs/$$filename-deps-bundle.json; \
+	done

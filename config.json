@@ -1,4 +1,17 @@
 {
+  "csiro.fhir.au.smartforms": {
+    "version": [
+      "0.3.0"
+    ],
+    "paths": {
+      "ig_packages": "lib/au_core_test_kit/igs/*.tgz",
+      "main_file": "lib/au_core_test_kit.rb",
+      "ig_output_directory": "lib/au_core_test_kit/igs",
+      "ig_json_files": "lib/au_core_test_kit/igs/*.json"
+    },
+    "configs": {
+    }
+  },
   "hl7.fhir.au.core": {
     "metadata": {
       "description": "Configuration for Australian FHIR Core profiles testing",
