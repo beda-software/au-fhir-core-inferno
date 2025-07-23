@@ -66,7 +66,7 @@ module AUCoreTestKit
 
         combo_search_params.reject do |combo_search_param|
           # TODO: Move to the config
-          combo_search_param[:names].any? { |sp| %w[_count _sort].include? sp }
+          combo_search_param[:names].any? { |sp| %w[_count _sort _include].include? sp }
         end
       end
 
@@ -106,7 +106,7 @@ module AUCoreTestKit
       def remove_excluded_search_params(search_params)
         # TODO: Add to the config
         search_params.select do |search_param|
-          !%w[_count _sort].include? search_param.name
+          !%w[_count _sort _include].include? search_param.name
         end
       end
     end
