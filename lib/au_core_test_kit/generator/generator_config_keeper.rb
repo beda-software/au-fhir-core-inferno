@@ -19,6 +19,10 @@ module AUCoreTestKit
         load_config
       end
 
+      def cs_profile_url
+        @config['cs_profile_url']
+      end
+
       def metadata
         @config['metadata'] || {}
       end
@@ -45,6 +49,10 @@ module AUCoreTestKit
 
       def ig_packages_path
         paths['ig_packages']
+      end
+
+      def ig_deps_path
+        paths['ig_deps']
       end
 
       def main_file_path

@@ -96,6 +96,10 @@ module AUCoreTestKit
         search_param_by_resource_and_code(resource, name)
       end
 
+      def get_resources_by_type(resource_type)
+        resources_by_type[resource_type]
+      end
+
       private
 
       def resources_by_type

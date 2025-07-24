@@ -35,7 +35,7 @@ module AUCoreTestKit
       end
 
       def param
-        puts "Searching for metadata of #{resource} #{name} search parameter..."
+        # puts "Searching for metadata of #{resource} #{name} search parameter..."
         @param ||= ig_resources.search_param_by_resource_and_name(resource, name)
       end
 

@@ -23,7 +23,9 @@
       "1.1.0-preview",
       "2.0.0-draft"
     ],
+    "cs_profile_url": "http://hl7.org.au/fhir/core/CapabilityStatement/au-core-responder",
     "paths": {
+      "ig_deps": "lib/au_core_test_kit/igs/",
       "ig_packages": "lib/au_core_test_kit/igs/*.tgz",
       "main_file": "lib/au_core_test_kit.rb",
       "ig_output_directory": "lib/au_core_test_kit/igs",

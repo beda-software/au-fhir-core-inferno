@@ -176,6 +176,7 @@ module AUCoreTestKit
 
       def value_slices
         must_support_value_slice_elements.map do |current_element|
+          # puts "current_element: #{current_element.id}"
           {
             slice_id: current_element.id,
             slice_name: current_element.sliceName,

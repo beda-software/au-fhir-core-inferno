@@ -68,3 +68,19 @@ download_ig_deps:
 		echo "Processing $$tgz_file..."; \
 		$(compose) -f compose.uploadfig.yaml run --rm uploadfig UploadFIG -t -s $$tgz_file --includeReferencedDependencies -of lib/au_core_test_kit/igs/$$filename-deps-bundle.json; \
 	done
+
+uploadfig_download_ig_deps:
+	$(compose) -f compose.uploadfig.yaml run --rm uploadfig \
+	  UploadFIG \
+		-pid hl7.fhir.au.core \
+		-pv 2.0.0-draft \
+		-fd \
+		-r "*" \
+		--includeReferencedDependencies \
+		-ap "hl7.fhir.r4.core|5.0.0" \
+		-of lib/au_core_test_kit/igs/au-core-2.0.0-draft-deps-bundle.json \
+		-t
+
+download_ig:
+	curl -L -o lib/au_core_test_kit/igs/hl7.fhir.au.core-2.0.0-draft.tgz https://packages.fhir.org/hl7.fhir.au.core/2.0.0-draft
+	curl -L -o lib/au_core_test_kit/igs/csiro.fhir.au.smartforms-0.3.0.tgz https://packages.fhir.org/csiro.fhir.au.smartforms/0.3.0
