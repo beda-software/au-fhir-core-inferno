@@ -1,9 +1,9 @@
 require_relative '../../../must_support_test'
 
-module AUCoreTestKit
+module <%= suite_module_name %>
   module <%= module_name %>
     class <%= class_name %> < Inferno::Test
-      include AUCoreTestKit::MustSupportTest
+      include <%= suite_module_name %>::MustSupportTest
 
       title 'All must support elements are provided in the <%= resource_type %> resources returned'
       description %(

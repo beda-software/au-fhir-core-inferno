@@ -30,6 +30,14 @@ module AUCoreTestKit
         @config['title']
       end
 
+      def suite_module_name
+        @config['suite_module_name']
+      end
+
+      def tx_server_url
+        @config['tx_server_url']
+      end
+
       def module_name_prefix
         @config['module_name_prefix']
       end

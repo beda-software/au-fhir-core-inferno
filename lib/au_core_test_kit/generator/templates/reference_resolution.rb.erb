@@ -1,9 +1,9 @@
 require_relative '../../../reference_resolution_test'
 
-module AUCoreTestKit
+module <%= suite_module_name %>
   module <%= module_name %>
     class <%= class_name %> < Inferno::Test
-      include AUCoreTestKit::ReferenceResolutionTest
+      include <%= suite_module_name %>::ReferenceResolutionTest
 
       title 'MustSupport references within <%= resource_type %> resources are valid'
       description %(

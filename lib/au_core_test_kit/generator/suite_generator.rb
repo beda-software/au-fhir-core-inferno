@@ -13,13 +13,14 @@ module AUCoreTestKit
         end
       end
 
-      attr_accessor :ig_metadata, :base_output_dir
+      attr_accessor :ig_metadata, :base_output_dir, :config_keeper
 
       self.template_type = TEMPLATE_TYPES[:SUITE]
 
       def initialize(ig_metadata, base_output_dir)
         self.ig_metadata = ig_metadata
         self.base_output_dir = base_output_dir
+        self.config_keeper = GeneratorConfigKeeper.new
       end
 
       def version_specific_message_filters
@@ -28,6 +29,10 @@ module AUCoreTestKit
 
       def base_output_file_name
         "#{ig_metadata.ig_test_id_prefix}_test_suite.rb"
+      end
+
+      def tx_server_url
+        config_keeper.tx_server_url
       end
 
       def module_name

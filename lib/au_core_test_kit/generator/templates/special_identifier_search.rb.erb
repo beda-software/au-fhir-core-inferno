@@ -1,10 +1,10 @@
 require_relative '../../../special_identifier_search_test'
 require_relative '../../../generator/group_metadata'
 
-module AUCoreTestKit
+module <%= suite_module_name %>
   module <%= module_name %>
     class <%= class_name %> < Inferno::Test
-      include AUCoreTestKit::SpecialIdentifierSearchTest
+      include <%= suite_module_name %>::SpecialIdentifierSearchTest
 
       title '(SHOULD) <%= title %>'
       description %(<%= description %>)

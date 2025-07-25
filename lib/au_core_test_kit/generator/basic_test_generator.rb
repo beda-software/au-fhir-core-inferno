@@ -10,6 +10,10 @@ module AUCoreTestKit
       include GeneratorConstants
 
       class_attribute :template_type
+      def suite_module_name
+        config = GeneratorConfigKeeper.new
+        config.suite_module_name
+      end
 
       def template
         @template ||= File.read(File.join(__dir__, 'templates', template_file_name))
