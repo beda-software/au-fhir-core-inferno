@@ -14,7 +14,7 @@ module AUCoreTestKit
 patient:Patient.identifier (DVA) on the Encounter resource. This test
 will pass if the server returns a success response to the request.
 
-[AU Core Server CapabilityStatement](http://hl7.org.au/fhir/core//CapabilityStatement-au-core-server.html)
+[AU Core Server CapabilityStatement](http://hl7.org.au/fhir/core/2.0.0-draft/CapabilityStatement-au-core-server.html)
 )
 
       id :au_core_v200_draft_encounter_patient_dva_chain_search_test

@@ -211,6 +211,30 @@
   :strength: required
   :system: http://hl7.org/fhir/ValueSet/request-priority
   :path: priority
+- :type: Coding
+  :strength: required
+  :system: https://healthterminologies.gov.au/fhir/ValueSet/concurrent-supply-grounds-1
+  :path: value
+  :extensions:
+  - http://hl7.org.au/fhir/StructureDefinition/subsidised-concurrent-supply
+- :type: Coding
+  :strength: required
+  :system: http://terminology.hl7.org.au/ValueSet/medication-type
+  :path: value
+  :extensions:
+  - http://hl7.org.au/fhir/StructureDefinition/medication-type
+- :type: Coding
+  :strength: required
+  :system: http://terminology.hl7.org.au/ValueSet/medication-type
+  :path: value
+  :extensions:
+  - http://hl7.org.au/fhir/StructureDefinition/medication-type
+- :type: Coding
+  :strength: required
+  :system: http://terminology.hl7.org.au/ValueSet/medication-type
+  :path: value
+  :extensions:
+  - http://hl7.org.au/fhir/StructureDefinition/medication-type
 :references:
 - :path: MedicationRequest.medication[x]
   :profiles:
@@ -340,3 +364,4 @@
   - Practitioner
   - PractitionerRole
   - Organization
+:ig_id: hl7.fhir.au.core
