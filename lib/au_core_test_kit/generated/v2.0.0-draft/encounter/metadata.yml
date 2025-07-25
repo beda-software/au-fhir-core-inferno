@@ -73,7 +73,8 @@
     :full_paths:
     - Encounter.class
     :comparators: {}
-    :values: []
+    :values:
+    - RACF
     :type: Coding
     :contains_multiple: false
   :date:

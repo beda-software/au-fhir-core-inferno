@@ -161,6 +161,12 @@
 :must_supports:
   :extensions: []
   :slices:
+  - :slice_id: Observation.value[x]:valueQuantity
+    :slice_name: valueQuantity
+    :path: value[x]
+    :discriminator:
+      :type: type
+      :code: Quantity
   - :slice_id: Observation.category:VSCat
     :slice_name: VSCat
     :path: category
@@ -206,10 +212,10 @@
     :target_profiles:
     - http://hl7.org.au/fhir/core/StructureDefinition/au-core-patient
   - :path: effective[x]
+  - :path: value[x]
   - :path: component
   - :path: component.code
   - :path: component.value[x]
-  - :path: component.dataAbsentReason
   - :path: component:SystolicBP.code
   - :path: component:SystolicBP.value[x]
   - :path: component:SystolicBP.value[x].value
@@ -218,7 +224,6 @@
     :fixed_value: http://unitsofmeasure.org
   - :path: component:SystolicBP.value[x].code
     :fixed_value: mm[Hg]
-  - :path: component:SystolicBP.dataAbsentReason
   - :path: component:DiastolicBP.code
   - :path: component:DiastolicBP.value[x]
   - :path: component:DiastolicBP.value[x].value
@@ -227,7 +232,6 @@
     :fixed_value: http://unitsofmeasure.org
   - :path: component:DiastolicBP.value[x].code
     :fixed_value: mm[Hg]
-  - :path: component:DiastolicBP.dataAbsentReason
 :mandatory_elements:
 - Observation.status
 - Observation.category

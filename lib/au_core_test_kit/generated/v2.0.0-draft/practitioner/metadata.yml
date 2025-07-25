@@ -84,6 +84,41 @@
   :strength: required
   :system: http://hl7.org/fhir/ValueSet/administrative-gender
   :path: gender
+- :type: CodeableConcept
+  :strength: preferred
+  :system: http://terminology.hl7.org/ValueSet/gender-identity
+  :path: value
+  :extensions:
+  - http://hl7.org/fhir/StructureDefinition/individual-genderIdentity
+  - value
+- :type: CodeableConcept
+  :strength: example
+  :system: http://terminology.hl7.org/ValueSet/pronouns
+  :path: value
+  :extensions:
+  - http://hl7.org/fhir/StructureDefinition/individual-pronouns
+  - value
+- :type: CodeableConcept
+  :strength: example
+  :system: http://hl7.org/fhir/ValueSet/administrative-gender
+  :path: value
+  :extensions:
+  - http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender
+  - value
+- :type: CodeableConcept
+  :strength: example
+  :system: http://terminology.hl7.org/ValueSet/recorded-sex-or-gender-type
+  :path: value
+  :extensions:
+  - http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender
+  - type
+- :type: CodeableConcept
+  :strength: extensible
+  :system: http://terminology.hl7.org/ValueSet/jurisdiction
+  :path: value
+  :extensions:
+  - http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender
+  - jurisdiction
 :references:
 - :path: Practitioner.qualification.issuer
   :profiles:

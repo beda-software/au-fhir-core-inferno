@@ -198,6 +198,9 @@
   - :path: value[x]:valueQuantity.system
     :fixed_value: http://unitsofmeasure.org
   - :path: value[x]:valueQuantity.code
+  - :path: component
+  - :path: component.code
+  - :path: component.value[x]
 :mandatory_elements:
 - Observation.status
 - Observation.category
