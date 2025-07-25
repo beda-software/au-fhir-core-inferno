@@ -67,8 +67,24 @@ module AUCoreTestKit
         end
       end
 
+      def links
+        config_keeper.links
+      end
+
       def generate
-        File.open(output_file_name, 'w') { |f| f.write(output) }
+        template_output = output
+
+        links_array = links.map do |link|
+          %(        {
+          label: '#{link['label']}',
+          url: '#{link['url']}'
+        })
+        end.join(",\n")
+
+        links_replacement = "      links [\n#{links_array}\n      ]"
+        template_output.gsub!(/      links \[.*?\]/m, links_replacement)
+
+        File.open(output_file_name, 'w') { |f| f.write(template_output) }
       end
 
       def groups

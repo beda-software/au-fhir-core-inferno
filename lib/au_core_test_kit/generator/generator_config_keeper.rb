@@ -38,6 +38,10 @@ module AUCoreTestKit
         @config['tx_server_url']
       end
 
+      def links
+        @config['links'] || []
+      end
+
       def module_name_prefix
         @config['module_name_prefix']
       end
