@@ -23,21 +23,11 @@ module AUCoreTestKit
       end
 
       def add_metadata_from_ig
-        ig_data = ig_resources.ig
-        title = ig_data.title
-        short_title = title.gsub("Implementation Guide", "").strip
-
-        # metadata.ig_version = "v#{ig_data.version}"
-        # metadata.ig_id = ig_data.id
-        # metadata.ig_title = short_title
-        # metadata.ig_module_name_prefix = short_title.gsub(" ", "")
-        # metadata.ig_test_id_prefix = short_title.gsub(" ", "_").downcase
-        # TODO: Moved it to the config
-        metadata.ig_version = "v2.0.0-draft"
-        metadata.ig_id = "hl7.fhir.au.core"
-        metadata.ig_title = "AU Core"
-        metadata.ig_module_name_prefix = "AUCore"
-        metadata.ig_test_id_prefix = "au_core"
+        metadata.ig_version = "v#{config_keeper.version}"
+        metadata.ig_id = config_keeper.id
+        metadata.ig_title = config_keeper.title
+        metadata.ig_module_name_prefix = config_keeper.module_name_prefix
+        metadata.ig_test_id_prefix = config_keeper.test_id_prefix
       end
 
       def resources_in_capability_statement

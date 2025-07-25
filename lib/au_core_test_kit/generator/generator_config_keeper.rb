@@ -6,9 +6,8 @@ module AUCoreTestKit
   class Generator
     class GeneratorConfigKeeper
       CONFIG_FILE_PATH = File.join(File.dirname(__FILE__), '../../../config.json')
-      CONFIG_ROOT_KEY = 'hl7.fhir.au.core'
 
-      attr_reader :config, :versions
+      attr_reader :config, :version
 
       def initialize(config_file_path = CONFIG_FILE_PATH)
         @config_file_path = config_file_path
@@ -23,6 +22,22 @@ module AUCoreTestKit
         @config['cs_profile_url']
       end
 
+      def id
+        @config['id']
+      end
+
+      def title
+        @config['title']
+      end
+
+      def module_name_prefix
+        @config['module_name_prefix']
+      end
+
+      def test_id_prefix
+        @config['test_id_prefix']
+      end
+
       def metadata
         @config['metadata'] || {}
       end
@@ -33,14 +48,6 @@ module AUCoreTestKit
 
       def last_updated
         metadata['last_updated']
-      end
-
-      def version
-        metadata['version']
-      end
-
-      def supported_versions
-        @versions
       end
 
       def paths
@@ -155,9 +162,8 @@ module AUCoreTestKit
       private
 
       def load_config
-        @raw_config = JSON.parse(File.read(@config_file_path))
-        @config = @raw_config[CONFIG_ROOT_KEY] || {}
-        @versions = @config['version'] || []
+        @config = JSON.parse(File.read(@config_file_path))
+        @version = @config['version'] || []
       end
 
       def configs

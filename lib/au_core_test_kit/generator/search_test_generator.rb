@@ -223,7 +223,7 @@ module AUCoreTestKit
 
         include_params_list.map do |include_param|
           if special_cases.key?(include_param)
-            puts "Special case for include_param: #{include_param}"
+            # puts "Special case for include_param: #{include_param}"
 
             return [special_cases[include_param]]
           end

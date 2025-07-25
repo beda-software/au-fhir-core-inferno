@@ -25,22 +25,17 @@ module AUCoreTestKit
   class Generator
     def self.generate
       config = GeneratorConfigKeeper.new
-      ig_packages_pattern = config.ig_packages_path
-      ig_packages = Dir.glob(File.join(Dir.pwd, ig_packages_pattern))
-
-      ig_packages.each do |ig_package|
-        new(ig_package).generate
-      end
+      new(config.ig_deps_path).generate
     end
 
-    attr_accessor :ig_resources, :ig_metadata, :ig_file_name
+    attr_accessor :ig_resources, :ig_metadata, :ig_deps_path
 
-    def initialize(ig_file_name)
-      self.ig_file_name = ig_file_name
+    def initialize(ig_deps_path)
+      self.ig_deps_path = ig_deps_path
     end
 
     def generate
-      puts "Generating tests for IG #{File.basename(ig_file_name)}"
+      # puts "Generating tests for IG #{File.basename(ig_deps_path)}"
       load_ig_package
       extract_metadata
       generate_search_tests
@@ -70,7 +65,7 @@ module AUCoreTestKit
 
     def load_ig_package
       FHIR.logger = Logger.new('/dev/null')
-      self.ig_resources = IGLoader.new(ig_file_name).load
+      self.ig_resources = IGLoader.new(ig_deps_path).load
     end
 
     def generate_reference_resolution_tests
