@@ -29,6 +29,14 @@ module AUCoreTestKit
 
       def load_ig
         json_files = Dir.glob(File.join(Dir.pwd, config.ig_deps_path, '*.json'))
+    
+        if config.respond_to?(:extra_json_paths) && config.extra_json_paths.is_a?(Array)
+          config.extra_json_paths.each do |extra_path|
+            full_path = extra_path.start_with?('/') ? extra_path : File.join(Dir.pwd, extra_path)
+            json_files << full_path if File.exist?(full_path)
+          end
+        end
+    
         json_files.each do |file_path|
           file_content = File.read(file_path)
           bundle = FHIR.from_contents(file_content)

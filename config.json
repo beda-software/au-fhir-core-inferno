@@ -15,7 +15,10 @@
     "ig_packages": "lib/au_core_test_kit/igs/*.tgz",
     "main_file": "lib/au_core_test_kit.rb",
     "ig_output_directory": "lib/au_core_test_kit/igs",
-    "ig_json_files": "lib/au_core_test_kit/igs/*.json"
+    "ig_json_files": "lib/au_core_test_kit/igs/*.json",
+    "extra_json_paths": [
+      "search-params.json"
+    ]
   },
   "configs": {
     "NAMING": {

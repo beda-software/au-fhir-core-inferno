@@ -74,6 +74,10 @@ module AUCoreTestKit
         paths['ig_json_files']
       end
 
+      def extra_json_paths
+        paths['extra_json_paths'] || []
+      end
+
       def naming_mappings
         configs['NAMING'] || {}
       end
