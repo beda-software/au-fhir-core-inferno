@@ -25,7 +25,7 @@ none are returned, the test is skipped.
           resource_type: 'Organization',
           search_param_names: ['identifier'],
           token_search_params: ['identifier'],
-          target_identifier: { display: 'ABN', url: 'http://hl7.org.au/id/abn' }
+          target_identifier: { 'display' => 'ABN', 'url' => 'http://hl7.org.au/id/abn' }
         )
       end
 

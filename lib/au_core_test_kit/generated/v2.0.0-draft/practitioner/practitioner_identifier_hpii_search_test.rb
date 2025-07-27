@@ -25,7 +25,7 @@ none are returned, the test is skipped.
           resource_type: 'Practitioner',
           search_param_names: ['identifier'],
           token_search_params: ['identifier'],
-          target_identifier: { display: 'HPI-I', url: 'http://ns.electronichealth.net.au/id/hi/hpii/1.0' }
+          target_identifier: { 'display' => 'HPI-I', 'url' => 'http://ns.electronichealth.net.au/id/hi/hpii/1.0' }
         )
       end
 

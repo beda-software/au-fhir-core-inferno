@@ -25,7 +25,7 @@ none are returned, the test is skipped.
           resource_type: 'Patient',
           search_param_names: ['identifier'],
           token_search_params: ['identifier'],
-          target_identifier: { display: 'DVA', url: 'http://ns.electronichealth.net.au/id/dva' }
+          target_identifier: { 'display' => 'DVA', 'url' => 'http://ns.electronichealth.net.au/id/dva' }
         )
       end
 
