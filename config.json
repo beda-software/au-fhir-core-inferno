@@ -15,6 +15,7 @@
   "paths": {
     "ig_deps": "lib/au_core_test_kit/igs/",
     "result_folder": "./lib/au_core_test_kit/generated/",
+    "related_result_folder": "/lib/au_core_test_kit/generated/",
     "ig_packages": "lib/au_core_test_kit/igs/*.tgz",
     "main_file": "lib/au_core_test_kit.rb",
     "ig_output_directory": "lib/au_core_test_kit/igs",
@@ -38,6 +39,91 @@
     }
   ],
   "configs": {
+    "multipleOrExpectations": {
+      "_comment": "Hard-coded values are used because the multipleOr attributes do not exist in the machine-readable files, but they do exist in the narrative. (https://github.com/hl7au/au-fhir-core-inferno/issues/61, https://github.com/hl7au/au-fhir-core-inferno/issues/63)",
+      "Procedure": {
+        "Procedure-status": "SHALL",
+        "clinical-code": "SHOULD"
+      },
+      "Observation": {
+        "Observation-status": "SHALL",
+        "clinical-code": "SHOULD"
+      },
+      "MedicationRequest": {
+        "medications-status": "SHALL",
+        "MedicationRequest-intent": "SHOULD"
+      },
+      "Immunization": {
+        "Immunization-vaccine-code": "SHOULD"
+      },
+      "Condition": {
+        "clinical-code": "MAY"
+      },
+      "Encounter": {
+        "Encounter-status": "MAY"
+      }
+    },
+    "multipleAndExpectations": {
+      "_comment": "Hard-coded values are used because the multipleAnd attributes do not exist in the machine-readable files, but they do exist in the narrative. (https://github.com/hl7au/au-fhir-core-inferno/issues/62)",
+      "Observation": {
+        "clinical-date": "SHOULD"
+      },
+      "Condition": {
+        "Condition-onset-date": "SHOULD"
+      },
+      "Encounter": {
+        "clinical-date": "SHOULD"
+      },
+      "Immunization": {
+        "clinical-date": "SHOULD"
+      },
+      "MedicationRequest": {
+        "MedicationRequest-authoredon": "SHOULD"
+      },
+      "Patient": {
+        "individual-birthdate": "MAY"
+      },
+      "Procedure": {
+        "clinical-date": "MAY"
+      }
+    },
+    "FIXED_SEARCH_VALUES": {
+      "_description": "In the current step we don't need to check the correct content of the response. We should care about the correct structure of the request. In this current case we use dates just to check that server can make a response for the request.",
+      "values": {
+        "diagnostic_result": ["251739003", "24701-5"],
+        "date": ["ge1950-01-01", "le2050-01-01", "gt1950-01-01", "lt2050-01-01"],
+        "datetime": ["ge1950-01-01T00:00:00.000Z", "le2050-01-01T23:59:59.999Z", "gt1950-01-01T00:00:00.000Z", "lt2050-01-01T23:59:59.999Z"]
+      },
+      "resource_mappings": {
+        "Observation": {
+          "clinical-date": "datetime",
+          "clinical-code": {
+            "value": "diagnostic_result",
+            "condition": {
+              "profile_url": "http://hl7.org.au/fhir/core/StructureDefinition/au-core-diagnosticresult"
+            }
+          }
+        },
+        "Condition": {
+          "Condition-onset-date": "datetime"
+        },
+        "Encounter": {
+          "clinical-date": "datetime"
+        },
+        "Immunization": {
+          "clinical-date": "datetime"
+        },
+        "MedicationRequest": {
+          "MedicationRequest-authoredon": "datetime"
+        },
+        "Patient": {
+          "individual-birthdate": "date"
+        },
+        "Procedure": {
+          "clinical-date": "datetime"
+        }
+      }
+    },
     "NAMING": {
       "_description": "Maps FHIR structure definition URLs to constant names used in the codebase",
       "http://hl7.org.au/fhir/core/StructureDefinition/au-core-allergyintolerance": "ALLERGYINTOLERANCE",
@@ -77,6 +163,26 @@
     },
     "SPECIAL_CASES": {
       "_description": "Special handling for specific profiles during testing",
+      "COMPARATORS": {
+        "_description": "Hard-coded values are used because the comparator expectation does not exist in the machine-readable files, but it does exist in the narrative. (https://github.com/hl7au/au-fhir-core-inferno/issues/48)",
+        "resources": [
+          "Observation",
+          "Condition",
+          "Encounter",
+          "Immunization",
+          "MedicationRequest",
+          "Patient",
+          "Procedure"
+        ],
+        "operators": ["gt", "lt", "ge", "le"],
+        "param_ids": [
+          "clinical-date",
+          "Condition-onset-date",
+          "clinical-date",
+          "MedicationRequest-authoredon",
+          "individual-birthdate"
+        ]
+      },
       "RESOURCES_TO_EXCLUDE": {
         "_description": "",
         "resources": ["Medication", "DiagnosticReport"]
