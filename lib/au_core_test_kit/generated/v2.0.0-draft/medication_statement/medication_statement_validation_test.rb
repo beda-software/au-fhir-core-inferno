@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require_relative '../../../validation_test'
+require 'inferno_suite_generator/validation_test'
 
 module AUCoreTestKit
   module AUCoreV200_DRAFT
     class MedicationStatementValidationTest < Inferno::Test
-      include AUCoreTestKit::ValidationTest
+      include InfernoSuiteGenerator::ValidationTest
 
       id :au_core_v200_draft_medication_statement_validation_test
       title 'MedicationStatement resources returned during previous tests conform to the AU Core MedicationStatement'

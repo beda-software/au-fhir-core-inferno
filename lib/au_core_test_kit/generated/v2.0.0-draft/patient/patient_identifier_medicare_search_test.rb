@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require_relative '../../../special_identifier_search_test'
-require_relative '../../../generator/group_metadata'
+require 'inferno_suite_generator/special_identifier_search_test'
+require 'inferno_suite_generator/group_metadata'
 
 module AUCoreTestKit
   module AUCoreV200_DRAFT
     class PatientIdentifierMedicareSearchTest < Inferno::Test
-      include AUCoreTestKit::SpecialIdentifierSearchTest
+      include InfernoSuiteGenerator::SpecialIdentifierSearchTest
 
       title '(SHOULD) Server returns valid results for Patient search by identifier (Medicare)'
       description %(A server SHOULD support searching by

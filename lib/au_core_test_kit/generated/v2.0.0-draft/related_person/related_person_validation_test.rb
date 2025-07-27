@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require_relative '../../../validation_test'
+require 'inferno_suite_generator/validation_test'
 
 module AUCoreTestKit
   module AUCoreV200_DRAFT
     class RelatedPersonValidationTest < Inferno::Test
-      include AUCoreTestKit::ValidationTest
+      include InfernoSuiteGenerator::ValidationTest
 
       id :au_core_v200_draft_related_person_validation_test
       title 'RelatedPerson resources returned during previous tests conform to the AU Core RelatedPerson'

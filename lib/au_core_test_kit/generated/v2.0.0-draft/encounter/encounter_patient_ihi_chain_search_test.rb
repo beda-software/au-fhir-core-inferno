@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require_relative '../../../chained_search_test'
-require_relative '../../../generator/group_metadata'
-require_relative '../../../helpers'
+require 'inferno_suite_generator/chained_search_test'
+require 'inferno_suite_generator/group_metadata'
+require 'inferno_suite_generator/helpers'
 
 module AUCoreTestKit
   module AUCoreV200_DRAFT
     class EncounterPatient_IHI_ChainSearchTest < Inferno::Test
-      include AUCoreTestKit::ChainedSearchTest
+      include InfernoSuiteGenerator::ChainedSearchTest
 
       title '(SHOULD) Server returns valid results for Encounter search by patient (IHI) (chained parameters)'
       description %(A server SHOULD support searching by

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require_relative '../../../reference_resolution_test'
+require 'inferno_suite_generator/reference_resolution_test'
 
 module AUCoreTestKit
   module AUCoreV200_DRAFT
     class MedicationStatementReferenceResolutionTest < Inferno::Test
-      include AUCoreTestKit::ReferenceResolutionTest
+      include InfernoSuiteGenerator::ReferenceResolutionTest
 
       title 'MustSupport references within MedicationStatement resources are valid'
       description %(

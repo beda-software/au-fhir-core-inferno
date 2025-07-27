@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require_relative '../../../search_test'
-require_relative '../../../generator/group_metadata'
-require_relative '../../../helpers'
+require 'inferno_suite_generator/search_test'
+require 'inferno_suite_generator/group_metadata'
+require 'inferno_suite_generator/helpers'
 
 module AUCoreTestKit
   module AUCoreV200_DRAFT
     class RespratePatientCategoryDateSearchTest < Inferno::Test
-      include AUCoreTestKit::SearchTest
+      include InfernoSuiteGenerator::SearchTest
 
       title '(SHALL) Server returns valid results for Observation search by patient + category + date'
       description %(

@@ -7,7 +7,7 @@ require_relative '../../custom_groups/v0.3.0-ballot/capability_statement_group'
 require_relative '../../custom_groups/smart_app_launch_group'
 require_relative '../../custom_groups/missing_data_group'
 require_relative '../../au_core_options'
-require_relative '../../helpers'
+require 'inferno_suite_generator/helpers'
 require_relative '../../constants'
 
 require_relative 'patient_group'

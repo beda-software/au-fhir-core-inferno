@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require_relative '../../../read_test'
+require 'inferno_suite_generator/read_test'
 
 module AUCoreTestKit
   module AUCoreV200_DRAFT
     class MedicationStatementReadTest < Inferno::Test
-      include AUCoreTestKit::ReadTest
+      include InfernoSuiteGenerator::ReadTest
 
       title '(SHALL) Server returns correct MedicationStatement resource from MedicationStatement read interaction'
       description 'A server SHALL support the MedicationStatement read interaction.'

@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require_relative '../../../search_test'
-require_relative '../../../generator/group_metadata'
-require_relative '../../../helpers'
+require 'inferno_suite_generator/search_test'
+require 'inferno_suite_generator/group_metadata'
+require 'inferno_suite_generator/helpers'
 
 module AUCoreTestKit
   module AUCoreV200_DRAFT
     class PractitionerRoleSpecialtyIncludePractitionerTest < Inferno::Test
-      include AUCoreTestKit::SearchTest
+      include InfernoSuiteGenerator::SearchTest
       title 'Server returns Practitioner resources from PractitionerRole search by specialty and PractitionerRole:practitioner'
       description %(
 This test will perform a search by specialty and the _include=PractitionerRole:practitioner

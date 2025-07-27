@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require_relative '../../../validation_test'
+require 'inferno_suite_generator/validation_test'
 
 module AUCoreTestKit
   module AUCoreV200_DRAFT
     class BodyweightValidationTest < Inferno::Test
-      include AUCoreTestKit::ValidationTest
+      include InfernoSuiteGenerator::ValidationTest
 
       id :au_core_v200_draft_bodyweight_validation_test
       title 'Observation resources returned during previous tests conform to the AU Core Body Weight'

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require_relative '../../../must_support_test'
+require 'inferno_suite_generator/must_support_test'
 
 module AUCoreTestKit
   module AUCoreV200_DRAFT
     class AllergyIntoleranceMustSupportTest < Inferno::Test
-      include AUCoreTestKit::MustSupportTest
+      include InfernoSuiteGenerator::MustSupportTest
 
       title 'All must support elements are provided in the AllergyIntolerance resources returned'
       description %(
