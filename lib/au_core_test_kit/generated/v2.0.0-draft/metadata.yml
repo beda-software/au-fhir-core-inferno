@@ -119,7 +119,7 @@
         :sa: MAY
         :eb: MAY
         :ap: MAY
-      :values:
+      :values: &1
       - ge1950-01-01T00:00:00.000Z
       - le2050-01-01T23:59:59.999Z
       - gt1950-01-01T00:00:00.000Z
@@ -161,8 +161,8 @@
         :expectation: SHOULD
         :target: Patient
       :target_resource: Patient
-  :include_params: &1 []
-  :revincludes: &2 []
+  :include_params: &2 []
+  :revincludes: &3 []
   :required_concepts: []
   :must_supports:
     :extensions: []
@@ -407,11 +407,7 @@
         :sa: MAY
         :eb: MAY
         :ap: MAY
-      :values:
-      - ge1950-01-01T00:00:00.000Z
-      - le2050-01-01T23:59:59.999Z
-      - gt1950-01-01T00:00:00.000Z
-      - lt2050-01-01T23:59:59.999Z
+      :values: *1
       :type: date
       :contains_multiple: false
       :multiple_and: SHOULD
@@ -449,8 +445,8 @@
         :expectation: SHOULD
         :target: Patient
       :target_resource: Patient
-  :include_params: *1
-  :revincludes: *2
+  :include_params: *2
+  :revincludes: *3
   :required_concepts: []
   :must_supports:
     :extensions: []
@@ -730,11 +726,7 @@
         :sa: MAY
         :eb: MAY
         :ap: MAY
-      :values:
-      - ge1950-01-01T00:00:00.000Z
-      - le2050-01-01T23:59:59.999Z
-      - gt1950-01-01T00:00:00.000Z
-      - lt2050-01-01T23:59:59.999Z
+      :values: *1
       :type: date
       :contains_multiple: false
       :multiple_and: SHOULD
@@ -772,8 +764,8 @@
         :expectation: SHOULD
         :target: Patient
       :target_resource: Patient
-  :include_params: *1
-  :revincludes: *2
+  :include_params: *2
+  :revincludes: *3
   :required_concepts: []
   :must_supports:
     :extensions: []
@@ -1016,11 +1008,7 @@
         :sa: MAY
         :eb: MAY
         :ap: MAY
-      :values:
-      - ge1950-01-01T00:00:00.000Z
-      - le2050-01-01T23:59:59.999Z
-      - gt1950-01-01T00:00:00.000Z
-      - lt2050-01-01T23:59:59.999Z
+      :values: *1
       :type: date
       :contains_multiple: false
       :multiple_and: SHOULD
@@ -1058,8 +1046,8 @@
         :expectation: SHOULD
         :target: Patient
       :target_resource: Patient
-  :include_params: *1
-  :revincludes: *2
+  :include_params: *2
+  :revincludes: *3
   :required_concepts: []
   :must_supports:
     :extensions: []
@@ -1304,11 +1292,7 @@
         :sa: MAY
         :eb: MAY
         :ap: MAY
-      :values:
-      - ge1950-01-01T00:00:00.000Z
-      - le2050-01-01T23:59:59.999Z
-      - gt1950-01-01T00:00:00.000Z
-      - lt2050-01-01T23:59:59.999Z
+      :values: *1
       :type: date
       :contains_multiple: false
       :multiple_and: SHOULD
@@ -1346,8 +1330,8 @@
         :expectation: SHOULD
         :target: Patient
       :target_resource: Patient
-  :include_params: *1
-  :revincludes: *2
+  :include_params: *2
+  :revincludes: *3
   :required_concepts: []
   :must_supports:
     :extensions: []
@@ -1592,11 +1576,7 @@
         :sa: MAY
         :eb: MAY
         :ap: MAY
-      :values:
-      - ge1950-01-01T00:00:00.000Z
-      - le2050-01-01T23:59:59.999Z
-      - gt1950-01-01T00:00:00.000Z
-      - lt2050-01-01T23:59:59.999Z
+      :values: *1
       :type: date
       :contains_multiple: false
       :multiple_and: SHOULD
@@ -1634,8 +1614,8 @@
         :expectation: SHOULD
         :target: Patient
       :target_resource: Patient
-  :include_params: *1
-  :revincludes: *2
+  :include_params: *2
+  :revincludes: *3
   :required_concepts: []
   :must_supports:
     :extensions: []
@@ -1877,11 +1857,7 @@
         :sa: MAY
         :eb: MAY
         :ap: MAY
-      :values:
-      - ge1950-01-01T00:00:00.000Z
-      - le2050-01-01T23:59:59.999Z
-      - gt1950-01-01T00:00:00.000Z
-      - lt2050-01-01T23:59:59.999Z
+      :values: *1
       :type: date
       :contains_multiple: false
       :multiple_and: SHOULD
@@ -1919,8 +1895,8 @@
         :expectation: SHOULD
         :target: Patient
       :target_resource: Patient
-  :include_params: *1
-  :revincludes: *2
+  :include_params: *2
+  :revincludes: *3
   :required_concepts: []
   :must_supports:
     :extensions: []
@@ -2157,11 +2133,7 @@
         :sa: MAY
         :eb: MAY
         :ap: MAY
-      :values:
-      - ge1950-01-01T00:00:00.000Z
-      - le2050-01-01T23:59:59.999Z
-      - gt1950-01-01T00:00:00.000Z
-      - lt2050-01-01T23:59:59.999Z
+      :values: *1
       :type: date
       :contains_multiple: false
       :multiple_and: SHOULD
@@ -2199,8 +2171,8 @@
         :expectation: SHOULD
         :target: Patient
       :target_resource: Patient
-  :include_params: *1
-  :revincludes: *2
+  :include_params: *2
+  :revincludes: *3
   :required_concepts: []
   :must_supports:
     :extensions: []
@@ -2441,11 +2413,7 @@
         :sa: MAY
         :eb: MAY
         :ap: MAY
-      :values:
-      - ge1950-01-01T00:00:00.000Z
-      - le2050-01-01T23:59:59.999Z
-      - gt1950-01-01T00:00:00.000Z
-      - lt2050-01-01T23:59:59.999Z
+      :values: *1
       :type: date
       :contains_multiple: false
       :multiple_and: SHOULD
@@ -2483,8 +2451,8 @@
         :expectation: SHOULD
         :target: Patient
       :target_resource: Patient
-  :include_params: *1
-  :revincludes: *2
+  :include_params: *2
+  :revincludes: *3
   :required_concepts: []
   :must_supports:
     :extensions: []
@@ -2693,11 +2661,7 @@
         :sa: MAY
         :eb: MAY
         :ap: MAY
-      :values:
-      - ge1950-01-01T00:00:00.000Z
-      - le2050-01-01T23:59:59.999Z
-      - gt1950-01-01T00:00:00.000Z
-      - lt2050-01-01T23:59:59.999Z
+      :values: *1
       :type: date
       :contains_multiple: false
       :multiple_and: SHOULD
@@ -2735,8 +2699,8 @@
         :expectation: SHOULD
         :target: Patient
       :target_resource: Patient
-  :include_params: *1
-  :revincludes: *2
+  :include_params: *2
+  :revincludes: *3
   :required_concepts: []
   :must_supports:
     :extensions: []
@@ -3086,11 +3050,7 @@
         :sa: MAY
         :eb: MAY
         :ap: MAY
-      :values:
-      - ge1950-01-01T00:00:00.000Z
-      - le2050-01-01T23:59:59.999Z
-      - gt1950-01-01T00:00:00.000Z
-      - lt2050-01-01T23:59:59.999Z
+      :values: *1
       :type: date
       :contains_multiple: false
       :multiple_and: SHOULD
@@ -3345,11 +3305,7 @@
         :sa: MAY
         :eb: MAY
         :ap: MAY
-      :values:
-      - ge1950-01-01T00:00:00.000Z
-      - le2050-01-01T23:59:59.999Z
-      - gt1950-01-01T00:00:00.000Z
-      - lt2050-01-01T23:59:59.999Z
+      :values: *1
       :type: Period
       :contains_multiple: false
       :multiple_and: SHOULD
@@ -3709,11 +3665,7 @@
         :sa: MAY
         :eb: MAY
         :ap: MAY
-      :values:
-      - ge1950-01-01T00:00:00.000Z
-      - le2050-01-01T23:59:59.999Z
-      - gt1950-01-01T00:00:00.000Z
-      - lt2050-01-01T23:59:59.999Z
+      :values: *1
       :type: date
       :contains_multiple: false
       :multiple_and: SHOULD
@@ -4119,11 +4071,7 @@
         :sa: MAY
         :eb: MAY
         :ap: MAY
-      :values:
-      - ge1950-01-01T00:00:00.000Z
-      - le2050-01-01T23:59:59.999Z
-      - gt1950-01-01T00:00:00.000Z
-      - lt2050-01-01T23:59:59.999Z
+      :values: *1
       :type: dateTime
       :contains_multiple: false
       :multiple_and: SHOULD
@@ -5364,11 +5312,7 @@
         :sa: MAY
         :eb: MAY
         :ap: MAY
-      :values:
-      - ge1950-01-01T00:00:00.000Z
-      - le2050-01-01T23:59:59.999Z
-      - gt1950-01-01T00:00:00.000Z
-      - lt2050-01-01T23:59:59.999Z
+      :values: *1
       :type: date
       :contains_multiple: false
       :multiple_and: MAY
