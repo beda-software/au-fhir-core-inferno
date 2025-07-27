@@ -31,7 +31,7 @@ will pass if the server returns a success response to the request.
           resource_type: 'Immunization',
           search_param_names: ['patient:Patient.identifier'],
           attr_paths: ['patient'],
-          target_identifier: { display: 'Medicare', url: 'http://ns.electronichealth.net.au/id/medicare-number' }
+          target_identifier: { 'display' => 'Medicare', 'url' => 'http://ns.electronichealth.net.au/id/medicare-number' }
         )
       end
 

@@ -31,7 +31,7 @@ will pass if the server returns a success response to the request.
           resource_type: 'Observation',
           search_param_names: ['patient:Patient.identifier'],
           attr_paths: ['subject'],
-          target_identifier: { display: 'DVA', url: 'http://ns.electronichealth.net.au/id/dva' }
+          target_identifier: { 'display' => 'DVA', 'url' => 'http://ns.electronichealth.net.au/id/dva' }
         )
       end
 
