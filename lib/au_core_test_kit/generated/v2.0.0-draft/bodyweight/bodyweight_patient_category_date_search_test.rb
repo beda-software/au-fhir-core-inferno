@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'inferno_suite_generator/search_test'
-require 'inferno_suite_generator/group_metadata'
-require 'inferno_suite_generator/helpers'
+require 'inferno_suite_generator/test_modules/search_test'
+require 'inferno_suite_generator/core/group_metadata'
+require 'inferno_suite_generator/utils/helpers'
 
 module AUCoreTestKit
   module AUCoreV200_DRAFT

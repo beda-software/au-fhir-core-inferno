@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'inferno_suite_generator/read_test'
+require 'inferno_suite_generator/test_modules/read_test'
 
 module AUCoreTestKit
   module AUCoreV200_DRAFT

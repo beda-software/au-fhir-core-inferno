@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'inferno_suite_generator/reference_resolution_test'
+require 'inferno_suite_generator/test_modules/reference_resolution_test'
 
 module AUCoreTestKit
   module AUCoreV200_DRAFT
