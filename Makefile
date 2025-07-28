@@ -5,7 +5,7 @@ inferno = run inferno
 
 setup: pull build migrate
 
-generate:
+generate: uploadfig_download_ig_deps
 	rm -rf lib/au_core_test_kit/generated/
 	$(compose) $(inferno) bundle exec rake au_core:generate
 	$(compose) $(inferno) rubocop -A lib/au_core_test_kit/
@@ -60,6 +60,7 @@ build_uploadfig:
 	$(compose) -f compose.uploadfig.yaml build
 
 uploadfig_download_ig_deps:
+	@mkdir -p lib/au_core_test_kit/igs
 	@PID=$$(grep -o '"id": *"[^"]*"' config.json | sed 's/"id": *"\([^"]*\)"/\1/'); \
 	PV=$$(grep -A1 '"id": *"'$$PID'"' config.json | grep -o '"version": *"[^"]*"' | sed 's/"version": *"\([^"]*\)"/\1/'); \
 	echo "Using Project ID (PID): $$PID"; \
