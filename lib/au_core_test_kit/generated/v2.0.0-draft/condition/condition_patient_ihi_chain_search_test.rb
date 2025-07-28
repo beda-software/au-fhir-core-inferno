@@ -31,7 +31,7 @@ will pass if the server returns a success response to the request.
           resource_type: 'Condition',
           search_param_names: ['patient:Patient.identifier'],
           attr_paths: ['subject'],
-          target_identifier: { 'display' => 'IHI', 'url' => 'http://ns.electronichealth.net.au/id/hi/ihi/1.0' }
+          target_identifier: { display: 'IHI', url: 'http://ns.electronichealth.net.au/id/hi/ihi/1.0' }
         )
       end
 

@@ -25,7 +25,7 @@ none are returned, the test is skipped.
           resource_type: 'PractitionerRole',
           search_param_names: ['identifier'],
           token_search_params: ['identifier'],
-          target_identifier: { 'display' => 'Medicare', 'url' => 'http://ns.electronichealth.net.au/id/medicare-provider-number' }
+          target_identifier: { display: 'Medicare', url: 'http://ns.electronichealth.net.au/id/medicare-provider-number' }
         )
       end
 
