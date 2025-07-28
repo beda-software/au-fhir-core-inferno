@@ -28,14 +28,14 @@ none are returned, the test is skipped.
             default: 'baratz-toni, irvine-ronny-lawrence, italia-sofia, howe-deangelo, hayes-arianne, baby-banks-john, banks-mia-leanne'
 
       def self.properties
-        @properties ||= SearchTestProperties.new(resource_type: 'MedicationRequest',
-                                                 search_param_names: ['authoredon'],
-                                                 test_medication_inclusion: true,
-                                                 optional_multiple_and_search_params: true)
+        @properties ||= InfernoSuiteGenerator::SearchTestProperties.new(resource_type: 'MedicationRequest',
+                                                                        search_param_names: ['authoredon'],
+                                                                        test_medication_inclusion: true,
+                                                                        optional_multiple_and_search_params: true)
       end
 
       def self.metadata
-        @metadata ||= Generator::GroupMetadata.new(YAML.load_file(File.join(__dir__, 'metadata.yml'), aliases: true))
+        @metadata ||= InfernoSuiteGenerator::Generator::GroupMetadata.new(YAML.load_file(File.join(__dir__, 'metadata.yml'), aliases: true))
       end
 
       def scratch_resources

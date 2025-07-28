@@ -29,7 +29,7 @@ none are returned, the test is skipped.
             default: 'baratz-toni, irvine-ronny-lawrence, italia-sofia, howe-deangelo, hayes-arianne, baby-banks-john, banks-mia-leanne'
 
       def self.properties
-        @properties ||= SearchTestProperties.new(
+        @properties ||= InfernoSuiteGenerator::SearchTestProperties.new(
           resource_type: 'Observation',
           search_param_names: %w[patient category status],
           token_search_params: ['category']
@@ -37,7 +37,7 @@ none are returned, the test is skipped.
       end
 
       def self.metadata
-        @metadata ||= Generator::GroupMetadata.new(YAML.load_file(File.join(__dir__, 'metadata.yml'), aliases: true))
+        @metadata ||= InfernoSuiteGenerator::Generator::GroupMetadata.new(YAML.load_file(File.join(__dir__, 'metadata.yml'), aliases: true))
       end
 
       def scratch_resources

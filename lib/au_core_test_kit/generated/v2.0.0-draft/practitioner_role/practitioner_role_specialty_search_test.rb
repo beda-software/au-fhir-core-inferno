@@ -24,7 +24,7 @@ none are returned, the test is skipped.
       optional
 
       def self.properties
-        @properties ||= SearchTestProperties.new(
+        @properties ||= InfernoSuiteGenerator::SearchTestProperties.new(
           resource_type: 'PractitionerRole',
           search_param_names: ['specialty'],
           includes: [{ 'parameter' => 'PractitionerRole:practitioner', 'target_resource' => 'Practitioner', 'paths' => ['practitioner'] }],
@@ -33,7 +33,7 @@ none are returned, the test is skipped.
       end
 
       def self.metadata
-        @metadata ||= Generator::GroupMetadata.new(YAML.load_file(File.join(__dir__, 'metadata.yml'), aliases: true))
+        @metadata ||= InfernoSuiteGenerator::Generator::GroupMetadata.new(YAML.load_file(File.join(__dir__, 'metadata.yml'), aliases: true))
       end
 
       def scratch_resources

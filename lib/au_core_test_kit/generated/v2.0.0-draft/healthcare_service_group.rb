@@ -70,7 +70,7 @@ read succeeds.
       run_as_group
 
       def self.metadata
-        @metadata ||= Generator::GroupMetadata.new(YAML.load_file(File.join(__dir__, 'healthcare_service', 'metadata.yml'), aliases: true))
+        @metadata ||= InfernoSuiteGenerator::Generator::GroupMetadata.new(YAML.load_file(File.join(__dir__, 'healthcare_service', 'metadata.yml'), aliases: true))
       end
 
       test from: :au_core_v200_draft_healthcare_service_read_test

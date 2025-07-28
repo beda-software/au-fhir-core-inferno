@@ -25,7 +25,7 @@ Test will pass if a Practitioner resources are found in the response.
             default: 'baratz-toni, irvine-ronny-lawrence, italia-sofia, howe-deangelo, hayes-arianne, baby-banks-john, banks-mia-leanne'
 
       def self.properties
-        @properties ||= SearchTestProperties.new(
+        @properties ||= InfernoSuiteGenerator::SearchTestProperties.new(
           resource_type: 'PractitionerRole',
           saves_delayed_references: true,
           search_param_names: ['_id'],
@@ -35,7 +35,7 @@ Test will pass if a Practitioner resources are found in the response.
       end
 
       def self.metadata
-        @metadata ||= Generator::GroupMetadata.new(YAML.load_file(File.join(__dir__, 'metadata.yml'), aliases: true))
+        @metadata ||= InfernoSuiteGenerator::Generator::GroupMetadata.new(YAML.load_file(File.join(__dir__, 'metadata.yml'), aliases: true))
       end
 
       def scratch_resources

@@ -35,7 +35,7 @@ requirement of AU Core v2.0.0-draft.
             default: 'baratz-toni, irvine-ronny-lawrence, italia-sofia, howe-deangelo, hayes-arianne, baby-banks-john, banks-mia-leanne'
 
       def self.properties
-        @properties ||= SearchTestProperties.new(
+        @properties ||= InfernoSuiteGenerator::SearchTestProperties.new(
           first_search: true,
           resource_type: 'Patient',
           search_param_names: ['_id'],
@@ -46,7 +46,7 @@ requirement of AU Core v2.0.0-draft.
       end
 
       def self.metadata
-        @metadata ||= Generator::GroupMetadata.new(YAML.load_file(File.join(__dir__, 'metadata.yml'), aliases: true))
+        @metadata ||= InfernoSuiteGenerator::Generator::GroupMetadata.new(YAML.load_file(File.join(__dir__, 'metadata.yml'), aliases: true))
       end
 
       def scratch_resources

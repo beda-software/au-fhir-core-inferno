@@ -30,7 +30,7 @@ requirement of AU Core v2.0.0-draft.
 
       id :au_core_v200_draft_healthcare_service_name_search_test
       def self.properties
-        @properties ||= SearchTestProperties.new(
+        @properties ||= InfernoSuiteGenerator::SearchTestProperties.new(
           first_search: true,
           resource_type: 'HealthcareService',
           search_param_names: ['name'],
@@ -39,7 +39,7 @@ requirement of AU Core v2.0.0-draft.
       end
 
       def self.metadata
-        @metadata ||= Generator::GroupMetadata.new(YAML.load_file(File.join(__dir__, 'metadata.yml'), aliases: true))
+        @metadata ||= InfernoSuiteGenerator::Generator::GroupMetadata.new(YAML.load_file(File.join(__dir__, 'metadata.yml'), aliases: true))
       end
 
       def scratch_resources

@@ -27,7 +27,7 @@ Core requires that both forms are supported by AU Core responders.
 
       id :au_core_v200_draft_practitioner_role_practitioner_search_test
       def self.properties
-        @properties ||= SearchTestProperties.new(
+        @properties ||= InfernoSuiteGenerator::SearchTestProperties.new(
           resource_type: 'PractitionerRole',
           search_param_names: ['practitioner'],
           includes: [{ 'parameter' => 'PractitionerRole:practitioner', 'target_resource' => 'Practitioner', 'paths' => ['practitioner'] }],
@@ -36,7 +36,7 @@ Core requires that both forms are supported by AU Core responders.
       end
 
       def self.metadata
-        @metadata ||= Generator::GroupMetadata.new(YAML.load_file(File.join(__dir__, 'metadata.yml'), aliases: true))
+        @metadata ||= InfernoSuiteGenerator::Generator::GroupMetadata.new(YAML.load_file(File.join(__dir__, 'metadata.yml'), aliases: true))
       end
 
       def scratch_resources

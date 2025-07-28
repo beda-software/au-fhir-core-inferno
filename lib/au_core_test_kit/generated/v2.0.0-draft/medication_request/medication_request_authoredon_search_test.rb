@@ -28,7 +28,7 @@ Medications, the search will be repeated with
       optional
 
       def self.properties
-        @properties ||= SearchTestProperties.new(
+        @properties ||= InfernoSuiteGenerator::SearchTestProperties.new(
           resource_type: 'MedicationRequest',
           search_param_names: ['authoredon'],
           possible_status_search: true,
@@ -39,7 +39,7 @@ Medications, the search will be repeated with
       end
 
       def self.metadata
-        @metadata ||= Generator::GroupMetadata.new(YAML.load_file(File.join(__dir__, 'metadata.yml'), aliases: true))
+        @metadata ||= InfernoSuiteGenerator::Generator::GroupMetadata.new(YAML.load_file(File.join(__dir__, 'metadata.yml'), aliases: true))
       end
 
       def scratch_resources
