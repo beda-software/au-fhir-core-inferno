@@ -57,6 +57,11 @@
     }
   ],
   "configs": {
+    "JURISDICTION_FILTER": {
+      "_description": "Configuration for jurisdiction filtering in search parameters",
+      "system": "urn:iso:std:iso:3166",
+      "code": "AU"
+    },
     "multipleOrExpectations": {
       "_comment": "Hard-coded values are used because the multipleOr attributes do not exist in the machine-readable files, but they do exist in the narrative. (https://github.com/hl7au/au-fhir-core-inferno/issues/61, https://github.com/hl7au/au-fhir-core-inferno/issues/63)",
       "Procedure": {
