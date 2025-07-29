@@ -18,8 +18,7 @@ none are returned, the test is skipped.
 
 This test verifies that the server supports searching by reference using
 the form `patient=[id]` as well as `patient=Patient/[id]`. The two
-different forms are expected to return the same number of results. AU
-Core requires that both forms are supported by AU Core responders.
+different forms are expected to return the same number of results. AU Core requires that both forms are supported by AU Core responders.
 
 Because this is the first search of the sequence, resources in the
 response will be used for subsequent tests.
@@ -29,7 +28,7 @@ return the same number of results. Search by POST is required by the
 FHIR R4 specification, and these tests interpret search by GET as a
 requirement of AU Core v2.0.0-draft.
 
-[AU Core Server CapabilityStatement](http://hl7.org.au/fhir/core/2.0.0-draft/CapabilityStatement-au-core-server.html)
+[AU Core Server CapabilityStatement](https://hl7.org.au/fhir/core/2.0.0-draft/CapabilityStatement-au-core-responder.html)
 
       )
 
