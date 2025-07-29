@@ -2,49 +2,20 @@
 
 require 'base64'
 require 'inferno/dsl/oauth_credentials'
+require 'inferno_suite_generator/utils/helpers'
 require_relative '../../version'
 require_relative '../../custom_groups/v0.3.0-ballot/capability_statement_group'
-require_relative '../../custom_groups/smart_app_launch_group'
 require_relative '../../custom_groups/missing_data_group'
-require_relative '../../au_core_options'
-require 'inferno_suite_generator/utils/helpers'
-require_relative '../../constants'
-
-require_relative 'patient_group'
-require_relative 'bodyweight_group'
-require_relative 'bloodpressure_group'
-require_relative 'bodyheight_group'
-require_relative 'diagnosticresult_path_group'
-require_relative 'bodytemp_group'
-require_relative 'heartrate_group'
-require_relative 'waistcircum_group'
-require_relative 'resprate_group'
-require_relative 'diagnosticresult_group'
-require_relative 'smokingstatus_group'
-require_relative 'allergy_intolerance_group'
-require_relative 'condition_group'
-require_relative 'encounter_group'
-require_relative 'immunization_group'
-require_relative 'medication_request_group'
-require_relative 'medication_statement_group'
-require_relative 'procedure_group'
-require_relative 'related_person_group'
-require_relative 'healthcare_service_group'
-require_relative 'location_group'
-require_relative 'organization_group'
-require_relative 'practitioner_group'
-require_relative 'practitioner_role_group'
 
 module AUCoreTestKit
   module AUCoreV200_DRAFT
     class AUCoreTestSuite < Inferno::TestSuite
       title 'AU Core v2.0.0-draft'
       description %(
-        The AU Core Test Kit tests systems for their conformance to the [AU Core
-        Implementation Guide]().
+        The AU Core Test Kit tests systems for their conformance to the [AU Core Implementation Guide](https://hl7.org.au/fhir/core/2.0.0-draft/index.html).
 
         HL7® FHIR® resources are validated with the Java validator using
-        `#{ENV.fetch('TX_SERVER_URL', 'https://tx.dev.hl7.org.au/fhir')}` as the terminology server.
+        https://tx.dev.hl7.org.au/fhir as the terminology server.
       )
       version VERSION
 
@@ -58,7 +29,11 @@ module AUCoreTestKit
 
       fhir_resource_validator do
         igs 'hl7.fhir.au.core#2.0.0-draft'
-        message_filters = Constants.validation_message_filters + VERSION_SPECIFIC_MESSAGE_FILTERS
+        message_filters = [
+          "The value provided ('xml') was not found in the value set 'MimeType'",
+          "The value provided ('json') was not found in the value set 'MimeType'",
+          "The value provided ('ttl') was not found in the value set 'MimeType'"
+        ] + VERSION_SPECIFIC_MESSAGE_FILTERS
 
         cli_context do
           txServer ENV.fetch('TX_SERVER_URL', 'https://tx.dev.hl7.org.au/fhir')
