@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'tls_test_kit'
-require 'inferno_suite_generator/utils/helpers'
 require_relative './conformance_support_test'
 require_relative './fhir_version_test'
 require_relative './json_support_test'
@@ -14,7 +13,38 @@ module AUCoreTestKit
       id :au_core_capability_statement
       title 'Capability Statement'
       short_description 'Retrieve information about supported server functionality using the FHIR capabilties interaction.'
-      description Helpers.get_capability_statement_group_description_text('Capability Statement')
+      description <<~DESCRIPTION
+        # Capability Statement
+        The Capability Statement Sequence tests a FHIR server's ability to formally describe
+        features supported by the API by using the [Capability
+        Statement](https://www.hl7.org/fhir/capabilitystatement.html) resource.
+        The features described in the Capability Statement must be consistent with
+        the required capabilities of a AU Core **Responder**.
+
+        The Capability Statement resource allows clients to determine which
+        resources are supported by a FHIR Server. Not all servers are expected to
+        implement all possible queries and data elements described in the AU Core
+        API. The **AU Core Responder Capability Statement** requires that
+        the Patient resource and **at least** one additional resource profile from the AU Core profiles.
+
+        # Testing Methodology
+
+        This test sequence accesses the server endpoint at `/metadata` using a
+        `GET` request. It parses the Capability Statement and verifies that:
+
+        * The endpoint is secured by an appropriate cryptographic protocol
+        * The resource matches the expected FHIR version defined by the tests
+        * The resource is a valid FHIR resource
+        * The server claims support for JSON encoding of resources
+        * The server claims support for the Patient resource and one other
+          resource
+
+        It collects the following information that is saved in the testing session
+        for use by later tests:
+
+        * List of resources supported
+        * List of queries parameters supported
+      DESCRIPTION
       run_as_group
 
       PROFILES = {
