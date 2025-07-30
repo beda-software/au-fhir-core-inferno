@@ -31,7 +31,7 @@
   "outer_groups": [
     {
       "import_type": "relative",
-      "import_path": "../../custom_groups/capability_statement_group",
+      "import_path": "../../custom_groups/capability_statement/capability_statement_group",
       "group_position": "before",
       "group_id": "au_core_capability_statement"
     },
