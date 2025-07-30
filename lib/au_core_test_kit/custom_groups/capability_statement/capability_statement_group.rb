@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require 'tls_test_kit'
-require_relative '../../helpers'
-require_relative '../capability_statement/conformance_support_test'
-require_relative '../capability_statement/fhir_version_test'
-require_relative '../capability_statement/json_support_test'
-require_relative '../capability_statement/xml_support_test'
+require 'inferno_suite_generator/utils/helpers'
+require_relative './conformance_support_test'
+require_relative './fhir_version_test'
+require_relative './json_support_test'
+require_relative './xml_support_test'
 require_relative './profile_support_test'
 
 module AUCoreTestKit

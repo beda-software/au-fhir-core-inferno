@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rspec'
-require_relative '../../lib/au_core_test_kit/helpers'
+require 'inferno_suite_generator/utils/helpers'
 
 RSpec.describe 'Missing data helpers' do
   resource_content = {
