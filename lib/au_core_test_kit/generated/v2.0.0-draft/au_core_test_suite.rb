@@ -4,7 +4,7 @@ require 'base64'
 require 'inferno/dsl/oauth_credentials'
 require 'inferno_suite_generator/utils/helpers'
 require_relative '../../version'
-require_relative '../../custom_groups/v0.3.0-ballot/tement/capability_statement_group'
+require_relative '../../custom_groups/capability_statement_group'
 require_relative '../../custom_groups/missing_data_group'
 
 require_relative 'patient_group'
@@ -116,7 +116,7 @@ module AUCoreTestKit
         title 'AU Core FHIR API'
         id :au_core_v200_draft_fhir_api
 
-        group from: :au_core_v030_ballot_capability_statement
+        group from: :au_core_capability_statement
 
         group from: :au_core_v200_draft_patient
 

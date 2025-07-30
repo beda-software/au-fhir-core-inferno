@@ -31,9 +31,9 @@
   "outer_groups": [
     {
       "import_type": "relative",
-      "import_path": "../../custom_groups/v0.3.0-ballot/capability_statement_group",
+      "import_path": "../../custom_groups/capability_statement_group",
       "group_position": "before",
-      "group_id": "au_core_v030_ballot_capability_statement"
+      "group_id": "au_core_capability_statement"
     },
     {
       "import_type": "relative",
@@ -57,6 +57,46 @@
     }
   ],
   "configs": {
+    "extractors": {
+      "must_support": {
+        "remove_elements": [
+          {
+            "profiles": [
+              "http://hl7.org.au/fhir/core/StructureDefinition/au-core-waistcircum"
+            ],
+            "element_key": "path",
+            "condition": "start_with?",
+            "value": "component"
+          },
+          {
+            "profiles": [
+              "http://hl7.org.au/fhir/core/StructureDefinition/au-core-diagnosticresult-path",
+              "http://hl7.org.au/fhir/core/StructureDefinition/au-core-diagnosticresult"
+            ],
+            "element_key": "path",
+            "condition": "equal",
+            "value": "method"
+          },
+          {
+            "profiles": [
+              "http://hl7.org.au/fhir/core/StructureDefinition/au-core-bodyweight",
+              "http://hl7.org.au/fhir/core/StructureDefinition/au-core-bloodpressure",
+              "http://hl7.org.au/fhir/core/StructureDefinition/au-core-bodyheight",
+              "http://hl7.org.au/fhir/core/StructureDefinition/au-core-diagnosticresult-path",
+              "http://hl7.org.au/fhir/core/StructureDefinition/au-core-bodytemp",
+              "http://hl7.org.au/fhir/core/StructureDefinition/au-core-heartrate",
+              "http://hl7.org.au/fhir/core/StructureDefinition/au-core-waistcircum",
+              "http://hl7.org.au/fhir/core/StructureDefinition/au-core-resprate",
+              "http://hl7.org.au/fhir/core/StructureDefinition/au-core-diagnosticresult",
+              "http://hl7.org.au/fhir/core/StructureDefinition/au-core-smokingstatus"
+            ],
+            "element_key": "path",
+            "condition": "pattern_match?",
+            "value": "(component(:[^.]+)?\\.)?dataAbsentReason"
+          }
+        ]
+      }
+    },
     "JURISDICTION_FILTER": {
       "_description": "Configuration for jurisdiction filtering in search parameters",
       "system": "urn:iso:std:iso:3166",

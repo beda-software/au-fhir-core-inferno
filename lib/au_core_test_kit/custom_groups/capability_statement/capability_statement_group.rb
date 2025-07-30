@@ -11,7 +11,7 @@ require_relative './profile_support_test'
 module AUCoreTestKit
   module AUCoreV030_BALLOT
     class CapabilityStatementGroup < Inferno::TestGroup
-      id :au_core_v030_ballot_capability_statement
+      id :au_core_capability_statement
       title 'Capability Statement'
       short_description 'Retrieve information about supported server functionality using the FHIR capabilties interaction.'
       description Helpers.get_capability_statement_group_description_text('Capability Statement')
