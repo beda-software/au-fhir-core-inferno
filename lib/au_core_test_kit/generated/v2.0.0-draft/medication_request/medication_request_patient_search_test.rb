@@ -9,9 +9,9 @@ module AUCoreTestKit
     class MedicationRequestPatientSearchTest < Inferno::Test
       include InfernoSuiteGenerator::SearchTest
 
-      title '(SHALL) Server returns valid results for MedicationRequest search by patient'
+      title '(SHOULD) Server returns valid results for MedicationRequest search by patient'
       description %(
-A server SHALL support searching by
+A server SHOULD support searching by
 patient on the MedicationRequest resource. This test
 will pass if resources are returned and match the search criteria. If
 none are returned, the test is skipped.
@@ -37,6 +37,8 @@ requirement of AU Core v2.0.0-draft.
       )
 
       id :au_core_v200_draft_medication_request_patient_search_test
+      optional
+
       input :patient_ids,
             title: 'Patient IDs',
             description: 'Comma separated list of patient IDs that in sum contain all MUST SUPPORT elements',

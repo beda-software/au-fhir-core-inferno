@@ -19,7 +19,7 @@
 :searches:
 - :names:
   - patient
-  :expectation: SHALL
+  :expectation: SHOULD
   :names_not_must_support_or_mandatory: []
   :must_support_or_mandatory: true
 - :names:
@@ -55,7 +55,7 @@
   - status
   :names_not_must_support_or_mandatory: []
   :must_support_or_mandatory: true
-- :expectation: SHALL
+- :expectation: SHOULD
   :names:
   - patient
   - status
