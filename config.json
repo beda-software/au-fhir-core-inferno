@@ -154,8 +154,7 @@
         "first_class_profile": true,
         "override_executor": {
           "search": {
-            "param": "identifier",
-            "method": "run_search_test_with_system"
+            "identifier": "run_search_test_with_system"
           }
         }
       },
@@ -173,12 +172,23 @@
         "extra_searches": [
           {
             "type": "search",
-            "params": [["identifier"], ["practitioner"], ["_id"], ["specialty"]]
+            "params": ["identifier"]
+          },
+          {
+            "type": "search",
+            "params": ["practitioner"]
+          },
+          {
+            "type": "search",
+            "params": ["_id"]
+          },
+          {
+            "type": "search",
+            "params": ["specialty"]
           }
         ]
       },
       "http://hl7.org.au/fhir/core/StructureDefinition/au-core-healthcareservice": {
-        "first_class_profile": true,
         "forced_initial_search": ["name"]
       },
       "http://hl7.org.au/fhir/core/StructureDefinition/au-core-medicationstatement": {
