@@ -21,6 +21,7 @@ none are returned, the test is skipped.
       )
 
       id :au_core_v200_draft_practitioner_role_identifier_search_test
+
       def self.properties
         @properties ||= InfernoSuiteGenerator::SearchTestProperties.new(
           resource_type: 'PractitionerRole',
