@@ -12,7 +12,7 @@ module AUCoreTestKit
 
       input :healthcare_service_ids,
             title: 'HealthcareService IDs',
-            description: 'Comma separated list of healthcare services IDs that in sum contain all MUST SUPPORT elements',
+            description: 'Comma separated list of healthcare service IDs that in sum contain all MUST SUPPORT elements',
             default: 'generalpractice-bungabbee-medical-clinic, communityhealth-southedge-practice, dentalpractice-annandale-dental, pathologylaboratory-woodcroft-pathology',
             optional: true
 
