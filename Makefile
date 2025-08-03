@@ -9,7 +9,6 @@ generate: uploadfig_download_ig_deps
 	rm -rf lib/au_core_test_kit/generated/
 	$(compose) $(inferno) bundle exec rake au_core:generate
 	$(compose) $(inferno) rubocop -A lib/au_core_test_kit/
-	$(compose) $(inferno) ruby lib/au_core_test_kit/generator/summary_generator.rb
 
 generate_local:
 	rm -rf lib/au_core_test_kit/generated/
@@ -72,7 +71,7 @@ uploadfig_download_ig_deps:
 		-fd \
 		-r "*" \
 		--includeReferencedDependencies \
-		-ap "hl7.fhir.r4.core|5.0.0" \
+		-ap "hl7.fhir.r5.core|5.0.0" \
 		-of lib/au_core_test_kit/igs/$$PID-$$PV-deps-bundle.json \
 		-t
 
