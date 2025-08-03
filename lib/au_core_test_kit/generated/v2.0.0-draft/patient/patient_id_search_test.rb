@@ -29,6 +29,7 @@ requirement of AU Core v2.0.0-draft.
       )
 
       id :au_core_v200_draft_patient__id_search_test
+
       input :patient_ids,
             title: 'Patient IDs',
             description: 'Comma separated list of patient IDs that in sum contain all MUST SUPPORT elements',

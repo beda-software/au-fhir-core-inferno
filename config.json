@@ -41,6 +41,7 @@
   },
   "constants": {
     "default_fhir_server": "https://fhir.hl7.org.au/aucore/fhir/DEFAULT",
+    "read_ids.patient": "baratz-toni, irvine-ronny-lawrence, italia-sofia, howe-deangelo, hayes-arianne, baby-banks-john, banks-mia-leanne",
     "read_ids.location": "bobrester-medical-center, au-hospital",
     "read_ids.organization": "dva-au, organization-medical-center-tc",
     "read_ids.practitioner": "alderson-helene",
