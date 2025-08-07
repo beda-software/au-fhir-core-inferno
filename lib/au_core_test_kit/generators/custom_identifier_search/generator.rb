@@ -9,20 +9,56 @@ module InfernoSuiteGenerator
     class SpecialIdentifierSearchTestGenerator < SearchTestGenerator
       class << self
         def generate(ig_metadata, base_output_dir, template_path)
-          ig_metadata.groups.reject do |group|
-            Registry.get(:config_keeper).resources_to_exclude(group.profile_url, group.resource)
+          target_groups = ig_metadata.groups.select do |group|
+            %w[Patient Organization Practitioner PractitionerRole].include? group.resource
           end
-            .select do |group|
-            Registry.get(:config_keeper).specific_identifiers(group.profile_url, group.resource,
-                                                              'identifier').any?
-          end
-                     .select { |group| group.searches.present? }
-                     .each do |group|
-            group.searches.each do |search|
-              next unless search[:names].include? 'identifier'
-
-              identifier_arr = Registry.get(:config_keeper).specific_identifiers(group.profile_url, group.resource,
-                                                                                 'identifier')
+          target_groups.each do |group|
+            searches = group.searches.select { |search| search[:names].include? 'identifier' }
+            searches.each do |search|
+              identifier_arr = case group.resource
+                               when 'Patient'
+                                 [
+                                   {
+                                     'display' => 'IHI',
+                                     'url' => 'http://ns.electronichealth.net.au/id/hi/ihi/1.0'
+                                   },
+                                   {
+                                     'display' => 'Medicare',
+                                     'url' => 'http://ns.electronichealth.net.au/id/medicare-number'
+                                   },
+                                   {
+                                     'display' => 'DVA',
+                                     'url' => 'http://ns.electronichealth.net.au/id/dva'
+                                   }
+                                 ]
+                               when 'Organization'
+                                 [
+                                   {
+                                     'display' => 'HPI-O',
+                                     'url' => 'http://ns.electronichealth.net.au/id/hi/hpio/1.0'
+                                   },
+                                   {
+                                     'display' => 'ABN',
+                                     'url' => 'http://hl7.org.au/id/abn'
+                                   }
+                                 ]
+                               when 'Practitioner'
+                                 [
+                                   {
+                                     'display' => 'HPI-I',
+                                     'url' => 'http://ns.electronichealth.net.au/id/hi/hpii/1.0'
+                                   }
+                                 ]
+                               when 'PractitionerRole'
+                                 [
+                                   {
+                                     'display' => 'Medicare',
+                                     'url' => 'http://ns.electronichealth.net.au/id/medicare-provider-number'
+                                   }
+                                 ]
+                               else
+                                 # do nothing
+                               end
               identifier_arr.each do |special_identifier|
                 new(group, search, base_output_dir, special_identifier, ig_metadata, template_path).generate
               end

@@ -18,9 +18,20 @@ module InfernoSuiteGenerator
               current_search_definition[:chain].each do |chain_item|
                 next unless chain_item[:target] == 'Patient'
 
-                Registry.get(:config_keeper).specific_identifiers(
-                  'http://hl7.org.au/fhir/core/StructureDefinition/au-core-patient', 'Patient', 'identifier'
-                ).each do |target_identifier|
+                [
+                  {
+                    'display' => 'IHI',
+                    'url' => 'http://ns.electronichealth.net.au/id/hi/ihi/1.0'
+                  },
+                  {
+                    'display' => 'Medicare',
+                    'url' => 'http://ns.electronichealth.net.au/id/medicare-number'
+                  },
+                  {
+                    'display' => 'DVA',
+                    'url' => 'http://ns.electronichealth.net.au/id/dva'
+                  }
+                ].each do |target_identifier|
                   new(
                     search_key.to_s,
                     group,
