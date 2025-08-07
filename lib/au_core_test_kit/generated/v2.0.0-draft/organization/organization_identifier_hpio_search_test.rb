@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'inferno_suite_generator/test_modules/special_identifier_search_test'
 require 'inferno_suite_generator/core/group_metadata'
+require_relative '../../../generators/custom_identifier_search/executor'
 
 module AUCoreTestKit
   module AUCoreV200_DRAFT
