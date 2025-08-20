@@ -37,7 +37,7 @@ module AUCoreTestKit
       end
 
       run do
-        perform_reference_resolution_test(scratch_resources[:all])
+        perform_reference_resolution_test(scratch_resources[:all], {})
       end
     end
   end
