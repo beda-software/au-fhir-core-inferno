@@ -31,6 +31,10 @@ fail if their code/system are not found in the valueset.
         scratch[:resprate_resources] ||= {}
       end
 
+      def filter_set
+        []
+      end
+
       run do
         perform_validation_test(scratch_resources[:all] || [],
                                 'http://hl7.org.au/fhir/core/StructureDefinition/au-core-resprate',

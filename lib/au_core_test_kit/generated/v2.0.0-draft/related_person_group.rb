@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'inferno_suite_generator/core/ig_demodata'
 require_relative 'related_person/related_person_patient_search_test'
 require_relative 'related_person/related_person_id_search_test'
 require_relative 'related_person/related_person_name_search_test'

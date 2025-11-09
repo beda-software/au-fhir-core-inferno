@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'inferno_suite_generator/core/ig_demodata'
 require_relative 'organization/organization_read_test'
 require_relative 'organization/organization_id_search_test'
 require_relative 'organization/organization_address_search_test'

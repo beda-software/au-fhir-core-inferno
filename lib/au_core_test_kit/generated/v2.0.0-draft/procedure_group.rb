@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'inferno_suite_generator/core/ig_demodata'
 require_relative 'procedure/procedure_patient_search_test'
 require_relative 'procedure/procedure_code_search_test'
 require_relative 'procedure/procedure_date_search_test'

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'inferno_suite_generator/core/ig_demodata'
 require_relative 'practitioner/practitioner_read_test'
 require_relative 'practitioner/practitioner_id_search_test'
 require_relative 'practitioner/practitioner_identifier_search_test'

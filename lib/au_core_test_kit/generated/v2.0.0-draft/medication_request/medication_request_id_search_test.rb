@@ -27,6 +27,12 @@ Medications, the search will be repeated with
       id :au_core_v200_draft_medication_request__id_search_test
       optional
 
+      def self.demodata
+        @demodata ||= InfernoSuiteGenerator::Generator::IGDemodata.new(
+          YAML.load_file(File.join(File.dirname(__dir__), 'demodata.yml'), aliases: true)
+        )
+      end
+
       def self.properties
         @properties ||= InfernoSuiteGenerator::SearchTestProperties.new(
           resource_type: 'MedicationRequest',

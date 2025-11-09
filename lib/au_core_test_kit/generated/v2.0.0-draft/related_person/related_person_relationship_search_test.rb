@@ -23,6 +23,12 @@ none are returned, the test is skipped.
       id :au_core_v200_draft_related_person_relationship_search_test
       optional
 
+      def self.demodata
+        @demodata ||= InfernoSuiteGenerator::Generator::IGDemodata.new(
+          YAML.load_file(File.join(File.dirname(__dir__), 'demodata.yml'), aliases: true)
+        )
+      end
+
       def self.properties
         @properties ||= InfernoSuiteGenerator::SearchTestProperties.new(
           resource_type: 'RelatedPerson',

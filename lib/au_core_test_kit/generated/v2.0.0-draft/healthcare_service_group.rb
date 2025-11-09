@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'inferno_suite_generator/core/ig_demodata'
 require_relative 'healthcare_service/healthcare_service_read_test'
 require_relative 'healthcare_service/healthcare_service_id_search_test'
 require_relative 'healthcare_service/healthcare_service_name_search_test'

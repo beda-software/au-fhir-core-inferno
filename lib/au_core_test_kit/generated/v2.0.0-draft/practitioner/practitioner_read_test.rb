@@ -18,6 +18,12 @@ module AUCoreTestKit
 
       id :au_core_v200_draft_practitioner_read_test
 
+      def self.demodata
+        @demodata ||= InfernoSuiteGenerator::Generator::IGDemodata.new(
+          YAML.load_file(File.join(File.dirname(__dir__), 'demodata.yml'), aliases: true)
+        )
+      end
+
       def resource_type
         'Practitioner'
       end

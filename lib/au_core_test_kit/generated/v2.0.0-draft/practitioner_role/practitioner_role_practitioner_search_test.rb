@@ -26,6 +26,12 @@ different forms are expected to return the same number of results. AU Core requi
 
       id :au_core_v200_draft_practitioner_role_practitioner_search_test
 
+      def self.demodata
+        @demodata ||= InfernoSuiteGenerator::Generator::IGDemodata.new(
+          YAML.load_file(File.join(File.dirname(__dir__), 'demodata.yml'), aliases: true)
+        )
+      end
+
       def self.properties
         @properties ||= InfernoSuiteGenerator::SearchTestProperties.new(
           resource_type: 'PractitionerRole',

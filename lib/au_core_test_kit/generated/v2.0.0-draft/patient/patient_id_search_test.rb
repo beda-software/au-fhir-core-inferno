@@ -35,6 +35,12 @@ requirement of AU Core v2.0.0-draft.
             description: 'Comma separated list of patient IDs that in sum contain all MUST SUPPORT elements',
             default: 'baratz-toni, irvine-ronny-lawrence, italia-sofia, howe-deangelo, hayes-arianne, baby-banks-john, banks-mia-leanne'
 
+      def self.demodata
+        @demodata ||= InfernoSuiteGenerator::Generator::IGDemodata.new(
+          YAML.load_file(File.join(File.dirname(__dir__), 'demodata.yml'), aliases: true)
+        )
+      end
+
       def self.properties
         @properties ||= InfernoSuiteGenerator::SearchTestProperties.new(
           first_search: true,

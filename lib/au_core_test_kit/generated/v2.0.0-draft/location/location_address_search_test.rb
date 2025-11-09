@@ -31,6 +31,12 @@ requirement of AU Core v2.0.0-draft.
       id :au_core_v200_draft_location_address_search_test
       optional
 
+      def self.demodata
+        @demodata ||= InfernoSuiteGenerator::Generator::IGDemodata.new(
+          YAML.load_file(File.join(File.dirname(__dir__), 'demodata.yml'), aliases: true)
+        )
+      end
+
       def self.properties
         @properties ||= InfernoSuiteGenerator::SearchTestProperties.new(
           first_search: true,

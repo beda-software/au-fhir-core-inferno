@@ -22,6 +22,12 @@ none are returned, the test is skipped.
 
       id :au_core_v200_draft_organization_identifier_search_test
 
+      def self.demodata
+        @demodata ||= InfernoSuiteGenerator::Generator::IGDemodata.new(
+          YAML.load_file(File.join(File.dirname(__dir__), 'demodata.yml'), aliases: true)
+        )
+      end
+
       def self.properties
         @properties ||= InfernoSuiteGenerator::SearchTestProperties.new(
           resource_type: 'Organization',

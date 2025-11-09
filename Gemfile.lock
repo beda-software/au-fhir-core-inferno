@@ -1,20 +1,17 @@
 GIT
-  remote: https://github.com/beda-software/inferno_suite_generator.git
-  revision: d33fdd0c3880f8bf2656a1a1d8e86471e3068b34
-  ref: d33fdd0c3880f8bf2656a1a1d8e86471e3068b34
-  specs:
-    inferno_suite_generator (0.1.0)
-      inferno_core (>= 0.6.1)
-      smart_app_launch_test_kit (>= 0.4.0)
-      tls_test_kit (~> 0.2.0)
-
-GIT
   remote: https://github.com/beda-software/validation-test-kit.git
   revision: 3438159ae5860216d37c559725fbfdc316ad745c
   ref: 3438159ae5860216d37c559725fbfdc316ad745c
   specs:
     validation_test_kit (0.0.1)
       inferno_core (>= 0.4.2)
+
+PATH
+  remote: ../inferno_suite_generator
+  specs:
+    inferno_suite_generator (0.1.0)
+      inferno_core (>= 0.6.1)
+      jsonpath (~> 1.1, >= 1.1.5)
 
 PATH
   remote: .
@@ -212,6 +209,8 @@ GEM
       aes_key_wrap
       bindata
       httpclient
+    jsonpath (1.1.5)
+      multi_json
     jwt (2.10.1)
       base64
     kramdown (2.5.1)

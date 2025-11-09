@@ -23,8 +23,15 @@ none are returned, the test is skipped.
       id :au_core_v200_draft_heartrate_code_search_test
       optional
 
+      def self.demodata
+        @demodata ||= InfernoSuiteGenerator::Generator::IGDemodata.new(
+          YAML.load_file(File.join(File.dirname(__dir__), 'demodata.yml'), aliases: true)
+        )
+      end
+
       def self.properties
         @properties ||= InfernoSuiteGenerator::SearchTestProperties.new(
+          fixed_value_search: true,
           resource_type: 'Observation',
           search_param_names: ['code'],
           possible_status_search: true,
