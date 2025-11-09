@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require_relative '../../../search_test'
-require_relative '../../../generator/group_metadata'
-require_relative '../../../helpers'
+require 'inferno_suite_generator/test_modules/search_test'
+require 'inferno_suite_generator/core/group_metadata'
+require 'inferno_suite_generator/utils/helpers'
 
 module AUCoreTestKit
   module AUCoreV200_DRAFT
     class MedicationStatementStatusSearchTest < Inferno::Test
-      include AUCoreTestKit::SearchTest
+      include InfernoSuiteGenerator::SearchTest
 
       title '(MAY) Server returns valid results for MedicationStatement search by status'
       description %(
@@ -16,15 +16,21 @@ status on the MedicationStatement resource. This test
 will pass if resources are returned and match the search criteria. If
 none are returned, the test is skipped.
 
-[AU Core Server CapabilityStatement](http://hl7.org.au/fhir/core//CapabilityStatement-au-core-server.html)
+[AU Core Server CapabilityStatement](https://hl7.org.au/fhir/core/2.0.0-draft/CapabilityStatement-au-core-responder.html)
 
       )
 
       id :au_core_v200_draft_medication_statement_status_search_test
       optional
 
+      def self.demodata
+        @demodata ||= InfernoSuiteGenerator::Generator::IGDemodata.new(
+          YAML.load_file(File.join(File.dirname(__dir__), 'demodata.yml'), aliases: true)
+        )
+      end
+
       def self.properties
-        @properties ||= SearchTestProperties.new(
+        @properties ||= InfernoSuiteGenerator::SearchTestProperties.new(
           resource_type: 'MedicationStatement',
           search_param_names: ['status'],
           includes: [{ 'parameter' => 'MedicationStatement:medication', 'target_resource' => 'Medication', 'paths' => ['medicationReference'] }]
@@ -32,7 +38,7 @@ none are returned, the test is skipped.
       end
 
       def self.metadata
-        @metadata ||= Generator::GroupMetadata.new(YAML.load_file(File.join(__dir__, 'metadata.yml'), aliases: true))
+        @metadata ||= InfernoSuiteGenerator::Generator::GroupMetadata.new(YAML.load_file(File.join(__dir__, 'metadata.yml'), aliases: true))
       end
 
       def scratch_resources

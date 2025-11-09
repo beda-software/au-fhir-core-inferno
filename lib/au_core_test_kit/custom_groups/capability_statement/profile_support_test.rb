@@ -1,52 +1,50 @@
 # frozen_string_literal: true
 
 module AUCoreTestKit
-  class ProfileSupportTest < Inferno::Test
-    id :au_core_profile_support
-    title 'Capability Statement lists support for required AU Core Profiles'
-    description %(
-      The AU Core Implementation Guide states:
+  module AUCoreV030_BALLOT
+    class ProfileSupportTest < Inferno::Test
+      id :au_core_profile_support
+      title 'Capability Statement lists support for required AU Core Resoruce Types'
+      description %(
+        The AU Core Implementation Guide states:
 
-      ```
-      The AU Core Server SHALL:
-      1. Support the AU Core Patient resource profile.
-      2. Support at least one additional resource profile from the list of US
-         Core Profiles.
-      ```
-    )
-    uses_request :capability_statement
+        ```
+        The AU Core Server SHALL:
+        1. Support the AU Core Patient resource.
+        2. Support at least one additional AU Core resources.
+        ```
+      )
+      uses_request :capability_statement
 
-    run do
-      assert_resource_type(:capability_statement)
-      capability_statement = resource
+      run do
+        assert_resource_type(:capability_statement)
+        capability_statement = resource
 
-      supported_profiles =
-        capability_statement.rest
-                            &.each_with_object([]) do |rest, profiles|
-          rest.resource.each { |resource| profiles.concat(resource.supportedProfile) }
-        end&.uniq
+        supported_resources =
+          capability_statement.rest
+                              &.each_with_object([]) do |rest, resources|
+            rest.resource.each { |resource| resources << resource.type }
+          end&.uniq
 
-      assert supported_profiles.include?('http://hl7.org.au/fhir/core/0.3.0-ballot/StructureDefinition-au-core-patient.html'),
-             'AU Core Patient profile not supported'
+        assert supported_resources.include?('Patient'), 'AU Core Patient profile not supported'
 
-      au_core_profiles = config.options[:au_core_profiles]
+        au_core_resources = config.options[:au_core_resources]
 
-      other_profiles = au_core_profiles.reject { |resource_type| resource_type == 'http://hl7.org.au/fhir/core/0.3.0-ballot/StructureDefinition-au-core-patient.html' }
-      other_profiles_supported = other_profiles.any? { |profile| supported_profiles.include? profile }
-      assert other_profiles_supported, 'No AU Core profiles other than Patient are supported'
+        other_resources = au_core_resources.reject { |resource_type| resource_type == 'Patient' }
+        other_resources_supported = other_resources.any? { |resource| supported_resources.include? resource }
+        assert other_resources_supported, 'No AU Core resources other than Patient are supported'
 
-      if config.options[:required_profiles].present?
-        required_profiles = config.options[:required_profiles]
+        if config.options[:required_resources].present?
+          missing_resources = config.options[:required_resources] - supported_resources
 
-        missing_profiles = required_profiles - supported_profiles
+          missing_resource_list =
+            missing_resources
+            .map { |resource| "`#{resource}`" }
+            .join(', ')
 
-        missing_profiles_list =
-          missing_profiles
-          .map { |resource| "`#{resource}`" }
-          .join(', ')
-
-        assert missing_profiles.empty?,
-               "The CapabilityStatement did not list support for the following resources: #{missing_profiles_list}"
+          assert missing_resources.empty?,
+                 "The CapabilityStatement did not list support for the following resources: #{missing_resource_list}"
+        end
       end
     end
   end

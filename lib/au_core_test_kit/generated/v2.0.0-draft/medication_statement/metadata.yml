@@ -156,6 +156,24 @@
   :strength: required
   :system: http://hl7.org/fhir/ValueSet/medication-statement-status
   :path: status
+- :type: Coding
+  :strength: required
+  :system: http://terminology.hl7.org.au/ValueSet/medication-type
+  :path: value
+  :extensions:
+  - http://hl7.org.au/fhir/StructureDefinition/medication-type
+- :type: Coding
+  :strength: required
+  :system: http://terminology.hl7.org.au/ValueSet/medication-type
+  :path: value
+  :extensions:
+  - http://hl7.org.au/fhir/StructureDefinition/medication-type
+- :type: Coding
+  :strength: required
+  :system: http://terminology.hl7.org.au/ValueSet/medication-type
+  :path: value
+  :extensions:
+  - http://hl7.org.au/fhir/StructureDefinition/medication-type
 :references:
 - :path: MedicationStatement.basedOn
   :profiles:
@@ -232,3 +250,4 @@
 - :path: reasonReference
   :resources:
   - DiagnosticReport
+:ig_id: hl7.fhir.au.core

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rspec'
-require_relative '../../lib/au_core_test_kit/search_test_helpers'
+require 'inferno_suite_generator/utils/search_test_helpers'
 
 RSpec.describe 'search_by_reference? method' do
   it 'SHOULD return false if there is no references in the search params hash' do

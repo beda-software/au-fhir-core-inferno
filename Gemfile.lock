@@ -7,6 +7,13 @@ GIT
       inferno_core (>= 0.4.2)
 
 PATH
+  remote: ../inferno_suite_generator
+  specs:
+    inferno_suite_generator (0.1.0)
+      inferno_core (>= 0.6.1)
+      jsonpath (~> 1.1, >= 1.1.5)
+
+PATH
   remote: .
   specs:
     au_core_test_kit (1.1.0)
@@ -202,6 +209,8 @@ GEM
       aes_key_wrap
       bindata
       httpclient
+    jsonpath (1.1.5)
+      multi_json
     jwt (2.10.1)
       base64
     kramdown (2.5.1)
@@ -392,6 +401,7 @@ DEPENDENCIES
   database_cleaner-sequel (~> 1.8)
   debug
   factory_bot (~> 6.1)
+  inferno_suite_generator!
   pg (~> 1.5)
   rspec (~> 3.10)
   rubocop (~> 1.63.2)

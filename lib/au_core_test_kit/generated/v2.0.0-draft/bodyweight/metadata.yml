@@ -198,6 +198,9 @@
   - :path: value[x]:valueQuantity.system
     :fixed_value: http://unitsofmeasure.org
   - :path: value[x]:valueQuantity.code
+  - :path: component
+  - :path: component.code
+  - :path: component.value[x]
 :mandatory_elements:
 - Observation.status
 - Observation.category
@@ -328,3 +331,4 @@
 :id: au_core_v200_draft_bodyweight
 :file_name: bodyweight_group.rb
 :delayed_references: []
+:ig_id: hl7.fhir.au.core

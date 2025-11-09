@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require_relative '../../../must_support_test'
+require 'inferno_suite_generator/test_modules/must_support_test'
 
 module AUCoreTestKit
   module AUCoreV200_DRAFT
     class BloodpressureMustSupportTest < Inferno::Test
-      include AUCoreTestKit::MustSupportTest
+      include InfernoSuiteGenerator::MustSupportTest
 
       title 'All must support elements are provided in the Observation resources returned'
       description %(
@@ -22,11 +22,9 @@ module AUCoreTestKit
         * Observation.code
         * Observation.component
         * Observation.component.code
-        * Observation.component.dataAbsentReason
         * Observation.component.value[x]
         * Observation.component:DiastolicBP
         * Observation.component:DiastolicBP.code
-        * Observation.component:DiastolicBP.dataAbsentReason
         * Observation.component:DiastolicBP.value[x]
         * Observation.component:DiastolicBP.value[x].code
         * Observation.component:DiastolicBP.value[x].system
@@ -34,7 +32,6 @@ module AUCoreTestKit
         * Observation.component:DiastolicBP.value[x].value
         * Observation.component:SystolicBP
         * Observation.component:SystolicBP.code
-        * Observation.component:SystolicBP.dataAbsentReason
         * Observation.component:SystolicBP.value[x]
         * Observation.component:SystolicBP.value[x].code
         * Observation.component:SystolicBP.value[x].system
@@ -43,6 +40,8 @@ module AUCoreTestKit
         * Observation.effective[x]
         * Observation.status
         * Observation.subject
+        * Observation.value[x]
+        * Observation.value[x]:valueQuantity
       )
 
       id :au_core_v200_draft_bloodpressure_must_support_test
@@ -52,7 +51,7 @@ module AUCoreTestKit
       end
 
       def self.metadata
-        @metadata ||= Generator::GroupMetadata.new(YAML.load_file(File.join(__dir__, 'metadata.yml'), aliases: true))
+        @metadata ||= InfernoSuiteGenerator::Generator::GroupMetadata.new(YAML.load_file(File.join(__dir__, 'metadata.yml'), aliases: true))
       end
 
       def scratch_resources

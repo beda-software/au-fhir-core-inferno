@@ -120,3 +120,4 @@
 :id: au_core_v200_draft_organization
 :file_name: organization_group.rb
 :delayed_references: []
+:ig_id: hl7.fhir.au.core
