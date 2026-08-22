@@ -63,14 +63,8 @@ module AUCoreTestKit
 
       VERSION_SPECIFIC_MESSAGE_FILTERS = [].freeze
 
-      # Base URL of a FHIRPath Lab instance (https://fhirpath-lab.com/) used to turn FHIRPath
-      # locations in validation messages into links testers can use to interactively debug the
-      # failing expression. FHIRPath Lab fetches the resource content from this suite's own
-      # /custom/<suite_id>/resources/... endpoint (see resource_keeper_endpoints.rb).
       FHIRPATHLAB_URL = ENV.fetch('FHIRPATHLAB_URL', 'https://fhirpath-lab.com/FhirPath').presence
 
-      suite_endpoint :post, '/resources/:session_id/:resource_type/:resource_id',
-                     InfernoSuiteGenerator::SaveResourceEndpoint
       suite_endpoint :get, '/resources/:session_id/:resource_type/:resource_id',
                      InfernoSuiteGenerator::FetchResourceEndpoint
       suite_endpoint :delete, '/resources/:session_id',
